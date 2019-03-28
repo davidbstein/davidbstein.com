@@ -88,7 +88,7 @@ const handle_click = (event) => {
 }
 
 const handle_keydown = (event) => {
-    if (selected && event.key === "Tab") event.preventDefault();
+    if (selected) event.preventDefault();
 }
 
 const handle_keyup = (event) => {
