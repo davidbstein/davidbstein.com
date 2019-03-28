@@ -18,7 +18,9 @@ const _default_state = {
 const save_state = () => {
     localStorage.setItem(`save_state[${puzzle_name}]`, JSON.stringify(STATE));
     const puzzle_list = JSON.parse(localStorage.getItem('puzzle_list'));
-    if (puzzle_list.indexOf(puzzle_name) === -1)
+    if (!puzzle_list)
+        puzzle_list = [puzzle_name];
+    else if (puzzle_list.indexOf(puzzle_name) === -1)
         puzzle_list.push(puzzle_name);
     localStorage.setItem('puzzle_list', JSON.stringify(puzzle_list));
     redraw_board(STATE.size);
@@ -73,7 +75,7 @@ const redraw_board = () => {
     }
 }
 
-/* 
+/*
 BOARD EDITING
 */
 
@@ -133,7 +135,7 @@ const handle_keyup = (event) => {
                     direction_horizontal = true;
                 }
                 selected = {
-                    row: selected.row, 
+                    row: selected.row,
                     col: Math.max(0, selected.col - 1)
                 }
                 break;
@@ -142,7 +144,7 @@ const handle_keyup = (event) => {
                     direction_horizontal = true;
                 } else {
                     selected = {
-                        row: selected.row, 
+                        row: selected.row,
                         col: Math.min(STATE.size - 1, selected.col + 1)
                     }
                 }
@@ -150,7 +152,7 @@ const handle_keyup = (event) => {
             case 'ArrowUp':
                 if (direction_horizontal){
                     direction_horizontal = false;
-                } 
+                }
                 selected = {
                     row: Math.max(0, selected.row - 1),
                     col: selected.col
@@ -168,7 +170,7 @@ const handle_keyup = (event) => {
                 break;
             case "Tab":
                 event.preventDefault();
-                direction_horizontal = !direction_horizontal;   
+                direction_horizontal = !direction_horizontal;
                 break;
         }
     }
