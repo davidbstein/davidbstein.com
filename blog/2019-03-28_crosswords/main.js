@@ -80,6 +80,9 @@ BOARD EDITING
 const handle_click = (event) => {
     var target = id2rc(event.path[0].id);
     if (target.row > -1 && target.col > -1){
+        if (selected.row === target.row && selected.col === target.col){
+            direction_horizontal = !direction_horizontal;
+        }
         selected = target;
     } else {
         selected = null;
