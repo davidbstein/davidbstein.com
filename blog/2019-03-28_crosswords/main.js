@@ -241,6 +241,19 @@ const redraw_puzzle_list = () => {
     }
 }
 
+const get_share = () => {
+    document.getElementById('share-puzzle-loader').value = btoa(JSON.stringify(STATE, null, 0));
+}
+
+const load_share = () => {
+    new_state = JSON.parse(atob(document.getElementById('share-puzzle-loader').value));
+    if (new_state) {
+        STATE = new_state;
+    } else {
+        alert("error!");
+    }
+}
+
 //initialize puzzle!
 function initialize() {
     //hookup listeners
@@ -248,7 +261,8 @@ function initialize() {
     document.body.onkeydown = handle_keydown;
     document.body.onclick = handle_click;
     document.getElementById("puzzle-name").onchange = update_name;
-
+    document.getElementById("get-share").onclick = get_share;
+    document.getElementById("load-share").onclick = load_share;
     // initialize
     document.getElementById("puzzle-name").value = puzzle_name;
     document.getElementById("display-size").textContent = STATE.size;
