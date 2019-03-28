@@ -94,7 +94,7 @@ div.box {
     height: 48px;
     width: 48px;
     border: 1px solid #9b9b9b;
-    display: table-cell;
+    display: inline-block;
     text-align: center;
     margin: 0;
     line-height: 48px;
