@@ -129,7 +129,6 @@ const handle_keyup = (event) => {
         }
         selected = next_item;
     } else {
-        console.log(event.key)
         switch (event.key){
             case 'ArrowLeft':
                 if (!direction_horizontal){
@@ -219,7 +218,6 @@ const size_down = () => {
 }
 
 const update_name = (event) => {
-    console.log(event);
     const pn = document.getElementById("puzzle-name").value;
     location.hash = pn;
     puzzle_name = pn;
@@ -239,7 +237,6 @@ const redraw_puzzle_list = () => {
         new_puzzle_link.className = 'puzzle_link';
         new_puzzle_link.onclick = change_puzzle.bind(this, puzzle_list[_p]);
         new_puzzle_link.innerText = puzzle_list[_p];
-        console.log(new_puzzle_link);
         render_target.appendChild(new_puzzle_link);
     }
 }
