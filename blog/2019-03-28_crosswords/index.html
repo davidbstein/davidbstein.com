@@ -1,0 +1,86 @@
+<html>
+  <head>
+     <title>stein - How to skip YouTube ads</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta content="stein - How to skip YouTube ads" property="og:title">
+     <meta content="stein - How to skip YouTube ads" property="twitter:title">
+     <meta content="A quick how-to skip ads on YouTube" name="twitter:description">
+     <meta content="A quick how-to skip ads on YouTube" name="og:description">
+     <meta content="/static/img/favicon.ico" name="twitter:image">
+     <meta content="/static/img/favicon.ico" name="og:image">
+     <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+     <link rel="stylesheet" type="text/css" href="/static/css/text.css">
+     <script src="/static/header-hider.js"></script>
+     <script async="" src="//www.google-analytics.com/analytics.js"></script>
+     <!-- generated HTML from commonmark-react.js -->
+     <script>
+        window.showTableOfContents = false;
+       var s = document.createElement('script');
+       s.src = '//davidbstein.disqus.com/embed.js';
+       s.setAttribute('data-timestamp', + new Date());
+       (document.head || document.body).appendChild(s);
+    </script>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="words.js"></script>
+  </head>
+  <body>
+  <div class="wrapper" >
+    <header class="" >
+      <div id="header-background" ></div>
+      <div id="header-content" >
+        <div class="title" ><a href="/" >stein</a></div>
+        <ul >
+          <li ><a href="/blog/index.html" >blog</a></li>
+          <li ><a href="/about/index.html" >about</a></li>
+       </ul>
+       </div>
+    </header>
+  <div id="content-wrapper" >
+    <div id="content-wrapper-bg" ></div>
+    <div id="content-wrapper-fg" class="text-document">
+      <div>
+        <h1>A crossword puzzle editor</h1>
+        <p>
+          I've recently gotten excited about crosswords. I picked up my "code something up
+          on a single flight" game from a while back and made a crossword editor. If I wind
+          up using it I'll finish the sharing feature, which I think is the one thing that
+          makes this less useful than it could be.
+        </p>
+        <p>
+          Be careful when resizing, it completely wipes the board.
+        </p>
+
+        <div id="puzzle-board-area">
+          <div id="puzzle-board">
+          </div>
+        </div>
+        <div id="controls">
+          <div id="size-select-area">
+            <span> Size: </span>
+            <span id="display-size">3</span>
+            <button class="symbutton" onclick="size_down()"> - </button>
+            <button class="symbutton" onclick="size_up()"> + </button>
+          </div>
+          <div id="set-name-area">
+            <span> Name: </span>
+            <input type="text" placeholder="my puzzle" id="puzzle-name"/>
+          </div>
+          <div id="save-button-area">
+            <button onclick="save_state();"> SAVE </button>
+          </div>
+        </div>
+        <div id="puzzle-list-area">
+          <div class="section-header">
+          saved puzzles:
+          </div>
+          <div id="puzzle-list-links">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script> initialize(); </script>
+  </body>
+</html>
