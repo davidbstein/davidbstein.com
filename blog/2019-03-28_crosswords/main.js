@@ -17,9 +17,7 @@ const _default_state = {
 }
 const save_state = () => {
     localStorage.setItem(`save_state[${puzzle_name}]`, JSON.stringify(STATE));
-    const puzzle_list = JSON.parse(localStorage.getItem('puzzle_list'));
-    if (!puzzle_list)
-        puzzle_list = [puzzle_name];
+    const puzzle_list = JSON.parse(localStorage.getItem('puzzle_list')) || [puzzle_name];
     else if (puzzle_list.indexOf(puzzle_name) === -1)
         puzzle_list.push(puzzle_name);
     localStorage.setItem('puzzle_list', JSON.stringify(puzzle_list));
