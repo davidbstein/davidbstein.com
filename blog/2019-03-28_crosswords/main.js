@@ -70,6 +70,7 @@ const redraw_board = () => {
         }
         const next = document.getElementById(rc2id(next_item))
         if (next) next.classList.add("next");
+        document.getElementById("keyboard-forcer").focus()
     }
 }
 

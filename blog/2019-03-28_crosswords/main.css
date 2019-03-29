@@ -69,6 +69,13 @@ input[type="text"] {
 
 /*********** BOARD ************/
 
+input#keyboard-forcer {
+    border: none;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    color: white;
+}
 
 div#puzzle-board {
     border: 3px solid black;
