@@ -1,0 +1,24 @@
+ul.post-list {
+  li {
+    margin-left: 0;
+    margin-bottom: 1em;
+    list-style: none;
+    .post-info{
+      display: flex;
+      .post-title {
+        font-size: 1.5em;
+        a {
+          text-decoration: none;
+        }
+      }
+      .post-meta {
+        color: #888;
+        text-align: right;
+        flex-grow: 1;
+      }
+    }
+    .post-exerpt {
+      opacity: .6;
+    }
+  }
+}
