@@ -31,3 +31,10 @@ plugins:
 sass:
   sass_dir: _sass
 show_excerpts: true
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "post"
+      author: David Stein
