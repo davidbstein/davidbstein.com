@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Airplane Challenge: Crossword Puzzle Editor"
+date:   2019-03-28
+author: David Stein
+categories: coding airplane-challenge
+excerpt_separator: <!--more-->
+---
+
+<link href="/assets/src/2019/crosswords/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/src/2019/crosswords/main.js"></script>
+<script type="text/javascript" src="/assets/src/2019/crosswords/words.js"></script>
+
+<p>
+  I've recently gotten excited about crosswords. I picked up my "code something up
+  on a single flight" game from a while back and made a crossword editor.
+  <!--more-->
+  It does stuff like
+  apply the symmetry rules automatically, which is fun I guess. If I wind
+  up using it I'll finish the sharing feature, which I think is the one thing that
+  makes this less useful than it could be.
+</p>
+<p>
+  Be careful when resizing, it completely wipes the board.
+</p>
+
+<div id="puzzle-board-area">
+  <div id="puzzle-board">
+  </div>
+</div>
+<div id="controls">
+  <div id="size-select-area">
+    <span> Size: </span>
+    <span id="display-size">3</span>
+    <button class="symbutton" onclick="size_down()"> - </button>
+    <button class="symbutton" onclick="size_up()"> + </button>
+  </div>
+  <div id="set-name-area">
+    <span> Name: </span>
+    <input type="text" placeholder="my puzzle" id="puzzle-name"/>
+  </div>
+  <div id="save-button-area">
+    <button onclick="save_state();"> SAVE </button>
+  </div>
+</div>
+<div id="puzzle-list-area">
+  <div class="section-header">
+  saved puzzles:
+  </div>
+  <div id="puzzle-list-links">
+  </div>
+</div>
+
+<script> initialize(); </script>
