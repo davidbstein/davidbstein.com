@@ -20,6 +20,12 @@ main {
     color: #aaa;
   }
 
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   strong {
       font-weight: 600;
   }
