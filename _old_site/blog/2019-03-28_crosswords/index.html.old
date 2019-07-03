@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="words.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="controls">
+        <div id="size-select-area">
+          <span> Size: </span>
+          <span id="display-size">3</span>
+          <button class="symbutton" onclick="size_down()"> - </button>
+          <button class="symbutton" onclick="size_up()"> + </button>
+        </div>
+        <div id="set-name-area">
+          <span> Name: </span>
+          <input type="text" placeholder="my puzzle" id="puzzle-name"/>
+        </div>
+        <div id="save-button-area">
+          <button onclick="save_state();"> SAVE </button>
+        </div>
+      </div>
+      <div id="puzzle-board-area">
+        <div id="puzzle-board">
+        </div>
+      </div>
+      <div id="puzzle-list-area">
+        <div class="section-header">
+        saved puzzles:
+        </div>
+        <div id="puzzle-list-links">
+        </div>
+      </div>
+    </div>
+    <script> initialize(); </script>
+  </body>
+</html>
