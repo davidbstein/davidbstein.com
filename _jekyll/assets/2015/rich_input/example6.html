@@ -1,0 +1,198 @@
+<!--
+Copyright (c) 2015 David Stein
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<html>
+  <head>
+    <style>
+       /* some styling so we know where the div is */
+       body {
+          background: #1d1f21;
+          padding: 4px 8px;
+          filter: invert(100%);
+       }
+       #container {
+          border: 1px solid;
+          padding: 4px;
+       }
+       #my-editable-div {
+          min-height: 1em;
+       }
+       #my-console-div {
+        font-family: monospace;
+        white-space: pre-wrap;
+        margin-top: 16px;
+        height: 80px;
+        height: calc(100vh - 32px - 16px - 1em - 4px);
+        overflow-y: scroll;
+       }
+    </style>
+    <script>
+      window.onload = function(){
+        var editable_div = document.getElementById("my-editable-div");
+
+        var START_RANGE_MARKER = "\u0091"
+        var END_RANGE_MARKER = "\u0092"
+        var AT_MENTION_REGEX = /((?!\w)@[\w\u0091\u0092]+)/g
+
+        /*
+        * Highlight @-mentions in the most naïve way possible - rebuild
+        * the entire div, clear and replace. Highly recommend you do something
+        * more efficient in practice :-)
+        */
+        function format_content(){
+          var raw_content;
+          mark_cursor();
+          raw_content = editable_div.textContent;
+          editable_div.innerHTML = raw_content.replace(
+            AT_MENTION_REGEX,
+            "<span style='color:cyan'>$1</span>"
+          );
+          restore_cursor();
+        }
+
+        /*
+        * marks the current location of the cursor or selection
+        */
+        function mark_cursor(){
+          var range = get_range();
+          // The order matters here!
+          // insertNode places the node DIRECTLY in front of the start of
+          // the range (meaning if two ranges have a boundary at the same
+          // point, the boundary will come after the inserted node). If we
+          // place the start marker first, we run the risk of putting it in
+          // after of the end marker.
+          _insert_char(END_RANGE_MARKER,
+            range.endContainer, range.endOffset);
+          _insert_char(START_RANGE_MARKER,
+            range.startContainer, range.startOffset);
+        }
+
+        /*
+        * inserts a char into a text node (@container) at a given offset
+        */
+        function _insert_char(char, container, offset){
+          var cursor = document.createRange();
+          cursor.setStart(container, offset);
+          cursor.collapse(true); // optional - forces end boundary to match start boundary
+          node = document.createTextNode(char);
+          cursor.insertNode(node);
+        }
+
+        /*
+        * restore the cursor or selection placed by `mark_cursor`
+        */
+        function restore_cursor(){
+          var container_offset_temp, range;
+          var start_node, start_offset, end_node, end_offset;
+          range = document.createRange()
+
+          container_offset_temp = _find_and_remove_marker(START_RANGE_MARKER, editable_div);
+          start_node = container_offset_temp[0];
+          start_offset = container_offset_temp[1];
+
+          container_offset_temp = _find_and_remove_marker(END_RANGE_MARKER, editable_div);
+          end_node = container_offset_temp[0];
+          end_offset = container_offset_temp[1];
+
+          range.setStart(start_node, start_offset);
+          range.setEnd(end_node, end_offset);
+
+          sel = document.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+
+        /*
+        * Note: TreeWalker provides a more succinct and efficient way to search
+        * the node tree. In an attempt to minimize the number of APIs used,
+        * I'm doing some simple recursion to walk to tree
+        *
+        * this method finds the first instance of @marker in @root_node,
+        * removes it, and returns the container node and offset of the
+        * location being marked
+        */
+        function _find_and_remove_marker(marker, root_node){
+          var node, i, offset, result, children;
+          if (root_node.nodeValue != null){
+            offset = root_node.nodeValue.indexOf(marker);
+            if (offset >= 0) {
+              root_node.nodeValue =
+                root_node.nodeValue.substr(0, offset) +
+                root_node.nodeValue.substr(offset+1);
+              return [root_node, offset];
+            }
+          } else {
+            children = root_node.childNodes;
+            for (var i in children){
+              node = children[i];
+              result = _find_and_remove_marker(marker, node);
+              if (result != null)
+                return result
+            }
+          }
+          return null
+        }
+
+
+        function get_range(){
+          var sel = document.getSelection();
+          if (sel.rangeCount === 0) {
+            return;
+          }
+          return sel.getRangeAt(0);
+        }
+
+        function insert_text_at_cursor(text){
+          var range = get_range();
+          if (!range) return;
+          range.deleteContents();
+          var text_node = document.createTextNode(text);
+          range.insertNode(text_node);
+          range.setStart(range.endContainer, range.endOffset);
+          document.getSelection().removeAllRanges()
+          document.getSelection().addRange(range)
+        }
+
+        function paste_event_handler(e){
+          var raw_text, raw_data, paste_data;
+          e.preventDefault();
+          raw_data = e.dataTransfer;
+          paste_data = e.clipboardData;
+          raw_data = raw_data || paste_data;
+          raw_text = raw_data.getData("Text");
+          insert_text_at_cursor(raw_text);
+          format_content();
+        }
+        // set up listeners for `drop` and `paste` events
+        editable_div.addEventListener("drop", paste_event_handler);
+        editable_div.addEventListener("paste", paste_event_handler);
+        editable_div.addEventListener("keyup", format_content);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="my-editable-div" contenteditable="true">
+        holy at-mentions <span style='color:cyan'>@batman</span>, most things work!
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+---
+layout: post
+title:  "A simple way to skip ads on youtube"
+date:   2016-05-03
+author: David Stein
+categories: [Tools]
+tags: [tool, programming]
+excerpt_separator: <!--more-->
+---
+
+Here are some bookmarkets for skipping ads and controlling videos on the web.
+<!--more-->
+
+<style>
+.fakebutton {
+  border: 1px solid #333;
+  background: #ddd;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 0px 4px;
+}
+.fakebutton:hover {
+  background: #ccc;
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  text-decoration: none;
+}
+</style>
+<h3>tl;dr:</h3>
+<p>
+  Drag this bookmarklet onto your bookmark bar (only tested in chome). Click it to skip ads.
+</p>
+
+<div>
+  <a class="fakebutton" href='javascript:var _avcontainer = document.getElementsByClassName("ad-showing"); if (_avcontainer[0]) { var av = _avcontainer[0].getElementsByTagName("video")[0]; av.currentTime=av.duration;} '>
+    Skip YouTube Ad
+  </a>
+</div>
+
+<p>
+ Here are a couple playback control bookmarklets that work on any HTML5
+</p>
+<div>
+  <a class="fakebutton" href='javascript:document.getElementsByTagName("video")[0].playbackRate += .5'>
+    Speed up playback
+  </a> <a class="fakebutton" href='javascript:document.getElementsByTagName("video")[0].playbackRate -= .5'>
+    Slow down up playback
+  </a> <a class="fakebutton" href='javascript:document.getElementsByTagName("video")[0].playbackRate += .5'>
+    Reset playback speed
+  </a>
+</div>
+
+<h2><span>A little more detail</span></h2>
+<p>
+  <span>YouTube wraps their player in a div with a bunch of  classes including </span><code>ad-showing</code><span> when an ad is being shown. If your browser is HTML5 compatible, this means you can get the </span><a   href="https://www.w3.org/wiki/HTML/Elements/video" title="" target="_blank" ><code><span class="hljs-tag">&lt;video&gt;</span></code></a><span> element fairly easily.</span>
+</p>
+<pre><code><span class="hljs-keyword">var</span> container = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"ad-showing"</span>)[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">if</span> (container) {
+  <span class="hljs-keyword">var</span> video_element = container.getElementsByTagName(<span class="hljs-string">"video"</span>)[<span class="hljs-number">0</span>];
+}</code></pre>
+
+
+<p>
+  <span>To skip to the end of an HTML video element:</span>
+</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">skip_to_end</span>(<span class="hljs-params">video_element</span>)</span>{
+  video_element.currentTime = video_element.duration;
+}
+</code></pre>
+
+
+<h2><span>How to go from code to bookmarklet</span></h2>
+<p>
+  The quick, dirty solution here is to make a bookmarklet like the top of the page by playing a little <a href="https://en.wikipedia.org/wiki/Code_golf" title="" target="_blank" >code golf</a>. This is my quick pass that gets under the character limit for a bookmark:
+</p>
+<p>
+  <code>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">var</span> _a=<span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"ad-showing"</span>)[</code><span> </span><code><span class="hljs-number">0</span>];<span class="hljs-keyword">if</span>(_a){var _v=_a.getElementsByTagName(<span class="hljs-string">"video"</span>)[<span class="hljs-number">0</span>];_v.currentTi</code><span> </span><code><span class="hljs-setting">me=<span class="hljs-value">_v.duration</span>}})()</span></code>
+</p>
+<p>
+  <span>If we wanted to make this a little better, we could wrap it in a </span><code><span class="hljs-built_in">setInterval</span></code><span> and make an extension that tries to skip ads at a regular interval. Alternatively, we could set up an event listener.</span>
+</p>
+
+
+<h2><span>A comment on HTML5 video</span></h2>
+<p>
+  <span>This is kind of a problem if you</span><span>'</span><span>re an advertiser and want to show ads. Providers like Hulu and CBS make it much harder to skip ads in a few ways. First, they use an iframe, which makes the bookmarklet approach fail because of </span><a   href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" title="" target="_blank" ><span>CORS</span></a><span> protection. Extensions don</span><span>'</span><span>t have this problem, but they use a proprietary player, which is a little harder to work around.</span>
+</p>

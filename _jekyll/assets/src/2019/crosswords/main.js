@@ -70,6 +70,7 @@ const redraw_board = () => {
         }
         const next = document.getElementById(rc2id(next_item))
         if (next) next.classList.add("next");
+        document.getElementById("keyboard-forcer").focus()
     }
 }
 
@@ -78,7 +79,7 @@ BOARD EDITING
 */
 
 const handle_click = (event) => {
-    var target = id2rc(event.path[0].id);
+    var target = id2rc((event.path||event.composedPath())[0].id);
     if (target.row > -1 && target.col > -1){
         if (selected && selected.row === target.row && selected.col === target.col){
             direction_horizontal = !direction_horizontal;
@@ -241,6 +242,19 @@ const redraw_puzzle_list = () => {
     }
 }
 
+const get_share = () => {
+    document.getElementById('share-puzzle-loader').value = btoa(JSON.stringify(STATE, null, 0));
+}
+
+const load_share = () => {
+    new_state = JSON.parse(atob(document.getElementById('share-puzzle-loader').value));
+    if (new_state) {
+        STATE = new_state;
+    } else {
+        alert("error!");
+    }
+}
+
 //initialize puzzle!
 function initialize() {
     //hookup listeners
@@ -248,7 +262,8 @@ function initialize() {
     document.body.onkeydown = handle_keydown;
     document.body.onclick = handle_click;
     document.getElementById("puzzle-name").onchange = update_name;
-
+    document.getElementById("get-share").onclick = get_share;
+    document.getElementById("load-share").onclick = load_share;
     // initialize
     document.getElementById("puzzle-name").value = puzzle_name;
     document.getElementById("display-size").textContent = STATE.size;
