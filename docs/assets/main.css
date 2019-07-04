@@ -58,7 +58,11 @@ main {
   margin: 32px auto;
   position: relative;
   padding: 0 32px;
-  min-height: calc(100vh - 168px); }
+  min-height: calc(100vh - 168px);
+  /* Tomorrow Night Theme */
+  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ }
   main .post-meta {
     color: #aaa; }
   main a {
@@ -130,6 +134,33 @@ main {
     font-style: italic; }
   main em {
     font-style: italic; }
+  main .tomorrow-comment, main .hljs-comment, main .hljs-title {
+    color: #969896; }
+  main .tomorrow-red, main .hljs-variable, main .hljs-attribute, main .hljs-tag, main .hljs-regexp, main .hljs-ruby .constant, main .hljs-xml .tag .title, main .hljs-xml .pi, main .hljs-xml .doctype, main .hljs-html .doctype, main .hljs-css .id, main .hljs-css .class, main .hljs-css .pseudo {
+    color: #cc6666; }
+  main .tomorrow-orange, main .hljs-number, main .hljs-preprocessor, main .hljs-built_in, main .hljs-literal, main .hljs-params, main .hljs-constant {
+    color: #de935f; }
+  main .tomorrow-yellow, main .hljs-class, main .hljs-ruby .class .title, main .hljs-css .rules .attribute {
+    color: #f0c674; }
+  main .tomorrow-green, main .hljs-string, main .hljs-value, main .hljs-inheritance, main .hljs-header, main .hljs-ruby .symbol, main .hljs-xml .cdata {
+    color: #b5bd68; }
+  main .tomorrow-aqua, main .hljs-css .hexcolor {
+    color: #8abeb7; }
+  main .tomorrow-blue, main .hljs-function, main .hljs-python .decorator, main .hljs-python .title, main .hljs-ruby .function .title, main .hljs-ruby .title .keyword, main .hljs-perl .sub, main .hljs-javascript .title, main .hljs-coffeescript .title {
+    color: #81a2be; }
+  main .tomorrow-purple, main .hljs-keyword, main .hljs-javascript .function {
+    color: #b294bb; }
+  main pre code {
+    display: block;
+    background: #1d1f21;
+    color: #c5c8c6;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    line-height: 1.5;
+    border: 1px solid #666;
+    padding: 16px; }
+  main .text-document code {
+    background: rgba(10, 10, 10, 0.05);
+    color: #09A54D; }
 
 footer {
   text-align: center;
@@ -209,7 +240,7 @@ ul.post-list li {
   ul.post-list li .post-info {
     display: flex; }
     ul.post-list li .post-info .post-title {
-      font-size: 1.5em; }
+      font-size: 1.2em; }
       ul.post-list li .post-info .post-title a {
         text-decoration: none; }
     ul.post-list li .post-info .post-meta {

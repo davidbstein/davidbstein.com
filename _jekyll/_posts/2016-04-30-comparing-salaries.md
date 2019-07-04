@@ -2,8 +2,8 @@
 layout: post
 title:  "Comparing Effective Salaries in Different Regions"
 date:   2016-04-30
-categories: [Engineering]
-tags: [coding, demo, finances]
+categories: [Tools]
+tags: [tool, finances]
 excerpt_separator: <!--more-->
 ---
 

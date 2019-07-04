@@ -4,10 +4,22 @@ title: blog
 permalink: /blog/
 ---
 
-<ul class="post-list">
+{% comment %}
+for a by-category post list:
+
   {% for category in site.categories %}
     <h3> {{ category[0] }} </h3>
-    {%- for post in site.posts -%}
+    {%- for post in category.last -%}
+
+      POST RENDER LOGIC
+
+    {%- endfor -%}
+  {%- endfor -%}
+
+{% endcomment %}
+
+<ul class="post-list">
+  {%- for post in site.posts -%}
     <li>
       <div class="post-info">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -18,6 +30,9 @@ permalink: /blog/
         </div>
         <div class="post-meta">{{ post.date | date: date_format }}</div>
       </div>
+      <div class="post-exerpt">
+        {{ post.excerpt }}
+      </div>
       <div class="post-tags">
         <ul class="post-tag-list">
           {% for tag in post.tags %}
@@ -25,11 +40,7 @@ permalink: /blog/
           {%- endfor -%}
         </ul>
       </div>
-      <div class="post-exerpt">
-        {{ post.excerpt }}
-      </div>
     </li>
-    {%- endfor -%}
   {%- endfor -%}
 </ul>
 

@@ -22,11 +22,11 @@ baseurl: "/"
 url: "https://davidbstein.com"
 twitter_username: steindavidb
 github_username:  davidbstein
+author: David Stein
 
 # Build settings
 markdown: kramdown
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
 sass:
   sass_dir: _sass
