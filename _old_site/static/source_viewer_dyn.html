@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/text.css">
+    <script src="/external/jquery.js"></script>
+    <script src="/external/highlight.min.js"></script>
+    <script>
+    var path = location.hash.substr(1);
+    $.get(path, function(data){
+      $("body").html("").append($("<pre>").text(data));
+      $('pre').each(function(i, block){
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    <style>
+      body {
+        background-image: none;
+        background-color: #242432;
+        padding: 16px;
+        font-size: 16px;
+      }
+      pre {
+        font-family: monospace;
+      }
+  </head>
+  <body>
+    <div id="container">
+      please enable javascript
+    </div>
+  </body>
+</html>

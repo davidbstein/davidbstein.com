@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "Airplane Challenge: Crossword Puzzle Editor"
+date:   2019-03-28
+author: David Stein
+categories: [Programming]
+tags: [coding, demo]
+excerpt_separator: <!--more-->
+---
+
+<p>
+  I've recently gotten excited about crosswords.
+  <!--more-->
+  I occationally challenge myself to try to build something in a single flight, without using the internet, documentation, or downloadable packages. It's a fun way to stay sharp and force myself to dig a little deeper into language features. I recently tried to build a crossword editor on a flight home to NYC from my parents' house in Nevada (just over 4 hours).
+</p><p>
+  It does stuff like apply the symmetry rules automatically, which is fun I guess. If I wind
+  up using it I'll finish the sharing feature, which I think is the most glaringly missing feature. Use a dot to fill in a square.
+</p>
+<p>
+  Be careful when resizing, it completely wipes the board.
+</p>
+<p>
+  <a href="/source-code-viewer.html#/assets/src/2019/crosswords/main.js">Here is the source code</a>
+</p>
+
+<link href="/assets/src/2019/crosswords/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/src/2019/crosswords/main.js"></script>
+<script type="text/javascript" src="/assets/src/2019/crosswords/words.js"></script>
+<div id="puzzle-board-area">
+  <div id="puzzle-board">
+  </div>
+</div>
+<div id="controls">
+  <div id="size-select-area">
+    <span> Size: </span>
+    <span id="display-size">3</span>
+    <button class="symbutton" onclick="size_down()"> - </button>
+    <button class="symbutton" onclick="size_up()"> + </button>
+  </div>
+  <div id="set-name-area">
+    <span> Name: </span>
+    <input type="text" placeholder="my puzzle" id="puzzle-name"/>
+  </div>
+  <div id="save-button-area">
+    <button onclick="save_state();"> SAVE </button>
+  </div>
+</div>
+<div id="puzzle-list-area">
+  <div class="section-header">
+  saved puzzles:
+  </div>
+  <div id="puzzle-list-links">
+  </div>
+</div>
+
+<script> initialize(); </script>

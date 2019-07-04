@@ -1,0 +1,98 @@
+<!--
+Copyright (C) 2015 David Stein
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+-->
+
+<html>
+<head>
+<title>stein - How performant do data pipelines need to be, really?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="stein - How performant do data pipelines need to be, really?" property="og:title" />
+<meta content="stein - How performant do data pipelines need to be, really?" property="twitter:title" />
+<meta content="some nerd's website" name="twitter:description" />
+<meta content="some nerd's website" name="og:description" />
+<meta content="/static/img/favicon.ico" name="twitter:image" />
+<meta content="/static/img/favicon.ico" name="og:image" />
+
+<link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+<link rel="stylesheet" type="text/css" href="/static/css/text.css">
+<link rel="stylesheet" type="text/css" href="/static/css/text.css">
+<script data-main="/compiled-coffee/app.js" src="/external/require.js"></script>
+<!-- generated HTML from commonmark-react.js -->
+
+</head>
+<body id="render-target">
+<div class="wrapper" >
+  <header class="" >
+    <div id="header-background" >
+    </div><div id="header-content" >
+    <div class="title" ><a href="/" >stein</a></div>
+    <ul >
+    <li ><a href="/blog" >blog</a></li>
+    <li ><a href="/about" >about</a></li>
+    </ul></div>
+    </header>
+  <div id="content-wrapper">
+  <div id="content-wrapper-bg"></div><div id="content-wrapper-fg">
+  <div style="white-space: pre-wrap; font-family: monospace; color: #444;">
+  <div style="color:white;"> loading...  </div>
+  (this page uses javascript, but falls back to markdown)
+  # A brief rant on over-optimization of data pipelines
+
+I've been interviewing and talking to companies for the past few months, and I was surprised to see a lot of great teams spending time over-optimizing data pipelines. Here is my quick litmus test for processing collected data:
+
+&gt There is no value in a data pipeline that is an order of magnitude faster than your ability to make decisions
+
+## Two pipelines
+
+Making something really fast is an expensive and hard technical problem. Making something really accurate is as well. If you can avoid it, not solving both problems at once is a good idea.  Plug the things you are actively watching into your fast, not-very-scalable, not-very-durable monitoring tools. Put everything into your big, slow, durable, batch processing stack.
+
+## Some examples:
+
+__Data used in product decisions (i.e. a/b testing, user growth metrics)__
+
+It takes on the order of hours to days to collect data, decide to make changes, and then make and deploy those changes.
+
+You don't need up-to-the minute analytics. You may have follow up questions; it matters to have detailed requeriable logs, it doesn't matter if you have a real-time dashboard. Time spent on storing detailed logs is useful, time spent making it _really fast_ isn't.
+
+Data exploration is a weird corollary. When exploring data you actually are making decisions on the order of minutes. My point here is that it's OK for that data to be stale. Hours of pre-processing to make exploration fast is going to have more value that making data easy to explore as it arrives. It feels cooler to have both, but I'm not aware of many contexts where that speedup is actionable.
+
+__Monitoring for things that "page" someone__
+
+It takes time to get to a computer and fix even the simplest of problems. You probably need something that can alert on the order of minutes, in some extremely rare cases on the order of tens of seconds.
+
+If you're taking minutes to react, the data is either pre-sliced and roughly accurate, or you're in for a longer investigation and can wait for slower pipelines. Time spent storing detailed logs isn't that important to monitoring, time spent making things _fast_ is, within reason.
+
+__Feeding data back into the product__
+
+ Maybe users can search, or can interact with each other (twitter and facebook likes, for example). You may actually need something fast and accurate here.
+
+
+
+
+  </div></div></div>
+  <div id="footer-wrapper">Copyright (c) David Stein</div>
+</div>
+</body>
+</html>

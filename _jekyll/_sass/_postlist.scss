@@ -1,0 +1,42 @@
+ul.post-list {
+  h3 {
+    font-weight: 200;
+  }
+  li {
+    margin-left: 0;
+    margin-bottom: 2em;
+    list-style: none;
+    .post-info{
+      display: flex;
+      .post-title {
+        font-size: 1.2em;
+        a {
+          text-decoration: none;
+        }
+      }
+      .post-meta {
+        color: #888;
+        text-align: right;
+        flex-grow: 1;
+      }
+    }
+    .post-exerpt {
+      opacity: .6;
+    }
+    .post-tags {
+      ul.post-tag-list {
+        display: inline-block;
+        li {
+          display: inline-block;
+          border: 1px solid #ccc;
+          margin-top: 4px;
+          margin-bottom: 0;
+          padding: 0 4px;
+          background: #EEE;
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}
