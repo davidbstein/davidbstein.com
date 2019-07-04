@@ -3,7 +3,13 @@ layout: page
 title: about
 permalink: /about/
 ---
+<style>
+  .visual-resume {
+    width: 100%;
+  }
+</style>
 
+![visual resume](/assets/images/2019-07-03_visual_resume.png){: .visual-resume}
 
 I currently live in NYC where I work on data security and privacy at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a>. I've also done some research at Sidewalk on mobility systems.
 
