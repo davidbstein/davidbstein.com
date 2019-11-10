@@ -11,11 +11,13 @@ permalink: /about/
 
 ![visual resume](/assets/images/2019-07-03_visual_resume.png){: .visual-resume}
 
-I currently live in NYC where I work on data security and privacy at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a>. I've also done some research at Sidewalk on mobility systems.
+I currently live in NYC and study at NYU Law School.
 
-Most recently before that I was a director of engineering at <a href="https://www.braze.com/product/" title="" target="_blank">Braze</a> in 2016 and 2017.
+I worked on data security and privacy at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a>. I also did some research at Sidewalk on mobility systems.
 
-I was a software engineer at <a href="https://dropbox.com" title="" target="_blank">Dropbox</a> from 2011 - 2015. I focused mostly on making large-scale data analytics accessible to non-engineers. I've also spent time on security incident response, prototyping, internal tools, and sales and support automation.
+I was a director of engineering at <a href="https://www.braze.com/product/" title="" target="_blank">Braze</a> in 2016 and 2017.
+
+I was a software engineer at <a href="https://dropbox.com" title="" target="_blank">Dropbox</a> from 2011 - 2015. I focused mostly on making large-scale data analytics accessible to non-engineers. I also spent time on security incident response, prototyping, internal tools, and sales and support automation.
 
 From 2009-2011 I did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures.
 
