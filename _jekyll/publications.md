@@ -8,7 +8,7 @@ permalink: /publications/
 
 ## Peer Reviewed Publications
 
-_Note: athorship is alphabetical_
+_Note: authorship is alphabetical_
 
 **Multi-Attribute Tradespace Exploration for Survivability** A. Ross, D. Stein, D. Hastings, _Journal of Spacecraft and Rockets vol. 51 no. 5_ (2014)
 
