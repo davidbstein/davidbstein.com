@@ -21,6 +21,8 @@ I was a software engineer at <a href="https://dropbox.com" title="" target="_bla
 
 From 2009-2011 I did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures.
 
+[Resume](/resume) - [Publications](/publications) - [Thesis](/thesis)
+
 <div>
   <div class="contact-boxes">
     <div class="contact">

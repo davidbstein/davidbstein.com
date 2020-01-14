@@ -20,11 +20,11 @@ _Note: authorship is alphabetical_
 
 ## Book Chapters
 
-**Toronto Tomorrow: The Master Innovation and Development Plan for the Quayside District** Vol. 2 Ch. 5: "Digital Innovation"
+**Toronto Tomorrow: The Master Innovation and Development Plan for the Quayside District** _Vol. 2 Ch. 5: "Digital Innovation"_ (2018)
 
 ## Patents
 
-**Methods, systems, and media for secure authentication of users using one or more biometric recognition systems David Stein, provisional application**, filed 2019
+**Methods, systems, and media for secure authentication of users using one or more biometric recognition systems** David Stein, provisional application, filed 2019
 
 **Identity systems, methods, and media for auditing and notifying users concerning verifiable claims** David Stein, John Wittrock, provisional application 62/775,897, filed 2018
 
