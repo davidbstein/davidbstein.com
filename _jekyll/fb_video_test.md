@@ -8,7 +8,7 @@ permalink: /fb_video_test
 This is a livestream, in theory:
 
 <iframe 
-      src='https://www.facebook.com/davidbstein/videos/10215756201798360/'
+      src='https://www.facebook.com/video/embed?video_id=10215756201798360'
       width='1280' 
       height='720'
       frameborder='0'>
