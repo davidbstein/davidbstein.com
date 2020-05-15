@@ -11,7 +11,7 @@ permalink: /about/
 
 ![visual resume](/assets/images/2019-07-03_visual_resume.png){: .visual-resume}
 
-I currently live in NYC and study at NYU Law School. I also do work on large-scale data collection and analytics, and a little bit of angel investing.
+I currently live in NYC and study at NYU Law School. I also do contracting work on large-scale data collection and analytics, and a little bit of angel investing.
 
 I worked on data security, privacy, and "smart" street grids at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a>.
 
