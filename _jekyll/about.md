@@ -11,11 +11,11 @@ permalink: /about/
 
 ![visual resume](/assets/images/2019-07-03_visual_resume.png){: .visual-resume}
 
-I currently live in NYC and study at NYU Law School.
+I currently live in NYC and study at NYU Law School. I also do work on large-scale data collection and analytics, and a little bit of angel investing.
 
-I worked on data security and privacy at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a>. I also did some research at Sidewalk on mobility systems.
+I worked on data security, privacy, and "smart" street grids at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a>.
 
-I was a director of engineering at <a href="https://www.braze.com/product/" title="" target="_blank">Braze</a> in 2016 and 2017.
+I was director of product engineering at <a href="https://www.braze.com/product/" title="" target="_blank">Braze</a> in 2016 and 2017.
 
 I was a software engineer at <a href="https://dropbox.com" title="" target="_blank">Dropbox</a> from 2011 - 2015. I focused mostly on making large-scale data analytics accessible to non-engineers. I also spent time on security incident response, prototyping, internal tools, and sales and support automation.
 
