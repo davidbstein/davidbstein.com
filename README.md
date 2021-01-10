@@ -10,6 +10,7 @@ I don't update this much and I keep forgetting how to build it.
 
  - (`fish`)[https://fishshell.com/]
  - (`jekyll`)[https://jekyllrb.com/docs/installation/#requirements]
+   - ruby needs dev tools too: `sudo apt install ruby ruby-all-dev`
    - updating fish path is different than jekyll install instructions. 
      <br/> add `set -x GEM_HOME ~/.gems; set -x PATH ~/.gems/bin $PATH` to `~/.config/fish/config.fish`
 
