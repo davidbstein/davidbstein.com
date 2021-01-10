@@ -8,9 +8,9 @@ I don't update this much and I keep forgetting how to build it.
 
 ### Dependencies
 
- - `ruby` (`gem`) - `brew install ruby` or `apt install ruby`
- - `bundler` - `gem install bundler`
- - `fish`
+ - (`fish`)[https://fishshell.com/]
+ - (`jekyll`)[https://jekyllrb.com/docs/installation/#requirements]
+   - updating fish path is different than jekyll install instructions. add `set -x GEM_HOME ~/.gems; set -x PATH ~/.gems/bin $PATH` to `~/.config/fish/config.fish`
 
 ### Building
 
