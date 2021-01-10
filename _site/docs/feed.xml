@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator>
+  <link href="https://davidbstein.com/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://davidbstein.com/" rel="alternate" type="text/html" />
+  <updated>2020-05-15T13:02:25-04:00</updated>
+  <id>https://davidbstein.com/feed.xml</id>
+  
+  
+  
+  
+    <title type="html">stein | </title>
+  
+  
+    <subtitle>stein's web site</subtitle>
+  
+  
+    <author>
+        <name>David Stein</name>
+      
+      
+    </author>
+  
+  
+  
+  
+  
+    <entry>
+      <title type="html">Airplane Challenge: Crossword Puzzle Editor</title>
+      <link href="https://davidbstein.com/programming/2019/03/28/airplane-challenge-crossword-drawer.htm" rel="alternate" type="text/html" title="Airplane Challenge: Crossword Puzzle Editor" />
+      <published>2019-03-28T00:00:00-04:00</published>
+      <updated>2019-03-28T00:00:00-04:00</updated>
+      <id>https://davidbstein.com/programming/2019/03/28/airplane-challenge-crossword-drawer</id>
+      
+      
+      
+      
+      
+      
+      <author>
+          <name>David Stein</name>
+        
+        
+      </author>
+      
+      
+        <category term="coding" />
+      
+        <category term="demo" />
+      
+      
+        <summary type="html">I've recently gotten excited about crosswords.</summary>
+        <content type="html">I've recently gotten excited about crosswords....</content>
+      
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">A simple way to skip ads on youtube</title>
+      <link href="https://davidbstein.com/tools/2016/05/03/skipping-ads.html" rel="alternate" type="text/html" title="A simple way to skip ads on youtube" />
+      <published>2016-05-03T00:00:00-04:00</published>
+      <updated>2016-05-03T00:00:00-04:00</updated>
+      <id>https://davidbstein.com/tools/2016/05/03/skipping-ads</id>
+      
+      
+      
+      
+      
+      
+      <author>
+          <name>David Stein</name>
+        
+        
+      </author>
+      
+      
+        <category term="tool" />
+      
+        <category term="programming" />
+      
+      
+        <summary type="html">Here are some bookmarkets for skipping ads and controlling videos on the web.</summary>
+        <content type="html">Here are some bookmarkets for skipping ads and controlling videos on the web....</content>
+      
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Comparing Effective Salaries in Different Regions</title>
+      <link href="https://davidbstein.com/tools/2016/04/30/comparing-salaries.html" rel="alternate" type="text/html" title="Comparing Effective Salaries in Different Regions" />
+      <published>2016-04-30T00:00:00-04:00</published>
+      <updated>2016-04-30T00:00:00-04:00</updated>
+      <id>https://davidbstein.com/tools/2016/04/30/comparing-salaries</id>
+      
+      
+      
+      
+      
+      
+      <author>
+          <name>David Stein</name>
+        
+        
+      </author>
+      
+      
+        <category term="tool" />
+      
+        <category term="finances" />
+      
+      
+        <summary type="html">While job hunting, I wanted a way to compare offers that could take different cost of living and tax rates into account. Hacked this thing up.</summary>
+        <content type="html">While job hunting, I wanted a way to compare offers that could take different cost of living and tax rates into account. Hacked this thing up....</content>
+      
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">How to build rich, styled input on the web</title>
+      <link href="https://davidbstein.com/programming/2015/12/22/rich-input.html" rel="alternate" type="text/html" title="How to build rich, styled input on the web" />
+      <published>2015-12-22T00:00:00-05:00</published>
+      <updated>2015-12-22T00:00:00-05:00</updated>
+      <id>https://davidbstein.com/programming/2015/12/22/rich-input</id>
+      
+      
+      
+      
+      
+      
+      <author>
+          <name>David Stein</name>
+        
+        
+      </author>
+      
+      
+        <category term="coding" />
+      
+        <category term="howto" />
+      
+      
+        <summary type="html">Building rich text editing experiences on the web is tricky. Even adding simple features like bold and italics mean digging into some of the weird, old corners of the HTML standard. This post walks through the basics of how it's done.</summary>
+        <content type="html">Building rich text editing experiences on the web is tricky. Even adding simple features like bold and italics mean digging into some of the weird, old corners of the HTML standard. This post walks through the basics of how it's done....</content>
+      
+      
+      
+    </entry>
+  
+
+</feed>

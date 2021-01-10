@@ -5,11 +5,25 @@ permalink: /about/
 ---
 <style>
   .visual-resume {
-    width: 100%;
+    --raw-img-width: 1170px;
+    position: relative;
+    /* BEGIN HAX */
+    width: min(100vw, 1170px);
+    margin-left: calc((100% - min(100vw, 1170px))/2);
+    /* END HAX... someday microsoft edge will support the CSS spec, lol */
+    --img-width: min(100vw, var(--raw-img-width));
+    width: var(--img-width);
+    margin-left: calc((100% - var(--img-width))/2)
+  }
+  .wide-img {
+    background: #e7eaf5;
+    display: block;
+    width: 100vw;
+    left: calc(50% - 50vw);
+    position: relative;
+    padding: 16px 0;
   }
 </style>
-
-![visual resume](/assets/images/2019-07-03_visual_resume.png){: .visual-resume}
 
 I currently live in NYC and study at NYU Law School. I also do some contract work on large-scale data collection and analytics, and a little bit of angel investing.
 
@@ -21,7 +35,12 @@ I was a software engineer at <a href="https://dropbox.com" title="" target="_bla
 
 From 2009-2011 I did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures.
 
-[Resume](/resume) - [Publications](/publications) - [Thesis](/thesis)
+![visual resume](/assets/images/2020-visual resume.png){: .visual-resume}
+{: .wide-img}
+
+[Resume](/resume) - [Publications](/publications)
+{: style="text-align: center;"}
+
 
 <div>
   <div class="contact-boxes">
