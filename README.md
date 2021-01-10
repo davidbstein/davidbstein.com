@@ -19,6 +19,8 @@ I don't update this much and I keep forgetting how to build it or find myself on
 
 ### Building
 
+  __first time__: `cd _jekyll; bundle install`
+
  `fish build.fish`
 
 
