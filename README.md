@@ -15,3 +15,6 @@ I don't update this much and I keep forgetting how to build it.
 ### Building
 
  `fish build.fish`
+
+> There's a good this fails because `can't find gem bundler (>= 0.a) with executable bundle`. Your ruby install is old. run `sudo gem update --system`
+
