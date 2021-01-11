@@ -29,7 +29,7 @@ permalink: /publications/
 **Multi-Attribute Tradespace Exploration for Survivability: Application to Satellite Radar**, M. Richards\*, A. Ross\*, D. Stein\*, D. Hastings, _American Institute of Aeronautics and Astronautics SPACE Forum_ (2009)
 ](https://dspace.mit.edu/handle/1721.1/72060)
 
-\* shared first authorship, listed is alphabetical
+\* shared first authorship, listed alphabetically
 {: style="font-size: small;"}
 
 ## Theses
