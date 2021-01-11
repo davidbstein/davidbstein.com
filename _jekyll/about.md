@@ -16,12 +16,13 @@ permalink: /about/
     margin-left: calc((100% - var(--img-width))/2)
   }
   .wide-img {
-    background: #e7eaf5;
     display: block;
     width: 100vw;
     left: calc(50% - 50vw);
     position: relative;
     padding: 16px 0;
+    border-top: 8px solid #e7eaf5;
+    border-bottom: 8px solid #e7eaf5;
   }
 </style>
 
