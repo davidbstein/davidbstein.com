@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator>
   <link href="https://davidbstein.com/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://davidbstein.com/" rel="alternate" type="text/html" />
-  <updated>2020-05-15T13:02:25-04:00</updated>
+  <updated>2021-02-01T16:04:29-05:00</updated>
   <id>https://davidbstein.com/feed.xml</id>
   
   
@@ -25,6 +25,35 @@
   
   
   
+  
+    <entry>
+      <title type="html">Proxying papers through NYU libraries</title>
+      <link href="https://davidbstein.com/2021/02/01/NYU-libraries-trick.html" rel="alternate" type="text/html" title="Proxying papers through NYU libraries" />
+      <published>2021-02-01T00:00:00-05:00</published>
+      <updated>2021-02-01T00:00:00-05:00</updated>
+      <id>https://davidbstein.com/2021/02/01/NYU-libraries-trick</id>
+      
+      
+      
+      
+      
+      
+      <author>
+          <name>David Stein</name>
+        
+        
+      </author>
+      
+      
+        <category term="howto" />
+      
+      
+        <summary type="html">Quick post. Super useful. Only works if you have an NYU login. This is a “bookmarklet”. Drag it into your bookmarks bar on your browser. You can rename it. It’ll still work. NYU proxy Click it when you it a paywall (e.g., on HeinOnline or an Elsevier journal or whatever), it will remove the paywall if NYU libraries has access. If you aren’t logged in to your NYU account, it will make you log in and then bring you page to the page. If NYU libraries doesn’t have access, it will bring you to an error page.</summary>
+        <content type="html">Quick post. Super useful. Only works if you have an NYU login. This is a “bookmarklet”. Drag it into your bookmarks bar on your browser. You can rename it. It’ll still work. NYU proxy Click it when you it a paywall (e.g., on HeinOnline or an Elsevier journal or whatever), it will remove the paywall if NYU libraries has access. If you aren’t logged in to your NYU account, it will make you log in and then bring you page to the page. If NYU libraries doesn’t have access, it will bring you to an error page....</content>
+      
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Airplane Challenge: Crossword Puzzle Editor</title>
