@@ -3,9 +3,13 @@ layout: post
 title:  "Proxying papers through NYU libraries"
 date:   2021-02-01
 author: David Stein
-tags: [howto]
+tags: [tool]
 excerpt_separator: <!--more-->
 ---
+
+
+Quick post. Super useful. Only works if you have an NYU login.
+<!--more-->
 
 <style>
 .fakebutton {
@@ -26,10 +30,6 @@ excerpt_separator: <!--more-->
   text-decoration: none;
 }
 </style>
-
-Quick post. Super useful. Only works if you have an NYU login.
-
-
 This is a "bookmarklet". Drag it into your bookmarks bar on your browser. You can rename it. It'll still work.
 
 <a class='fakebutton' href="javascript:location.href='http://proxy.library.nyu.edu/login?url='+location.href"> NYU proxy </a>
