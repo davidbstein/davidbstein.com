@@ -234,6 +234,10 @@ a:hover {
 }
 
 
+.unstyle-links a {
+    color: inherit;
+}
+
 .contact a img {
     height: 56px;
 }

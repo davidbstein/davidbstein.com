@@ -1,5 +1,5 @@
 cd _jekyll
-bundle exec jekyll build --destination ../docs
+  bundle exec jekyll build --destination ../docs
 cd ..
 
 echo "---

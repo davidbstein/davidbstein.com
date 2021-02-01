@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+Copyright 2020 David Stein
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+--><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> stein | How to build rich, styled input on the web </title><!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="How to build rich, styled input on the web" />
+<meta name="author" content="David Stein" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Building rich text editing experiences on the web is tricky. Even adding simple features like bold and italics mean digging into some of the weird, old corners of the HTML standard. This post walks through the basics of how it’s done." />
+<meta property="og:description" content="Building rich text editing experiences on the web is tricky. Even adding simple features like bold and italics mean digging into some of the weird, old corners of the HTML standard. This post walks through the basics of how it’s done." />
+<link rel="canonical" href="https://davidbstein.com/programming/2015/12/22/rich-input.html" />
+<meta property="og:url" content="https://davidbstein.com/programming/2015/12/22/rich-input.html" />
+<meta property="og:site_name" content="stein" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-12-22T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Building rich text editing experiences on the web is tricky. Even adding simple features like bold and italics mean digging into some of the weird, old corners of the HTML standard. This post walks through the basics of how it’s done.","author":{"@type":"Person","name":"David Stein"},"@type":"BlogPosting","url":"https://davidbstein.com/programming/2015/12/22/rich-input.html","headline":"How to build rich, styled input on the web","dateModified":"2015-12-22T00:00:00-05:00","datePublished":"2015-12-22T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidbstein.com/programming/2015/12/22/rich-input.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://davidbstein.com/feed.xml" title="stein" /></head>
+<body><header id="site-header">
+  <div id="header-background" ></div>
+  <nav>
+    <div class="title" >
+      <a href="/" >stein</a>
+    </div>
+    <ul >
+      <li ><a href="/blog">blog</a></li>
+      <li ><a href="/about">about</a></li>
+    </ul></div>
+  </nav>
+</header>
+<div id="header-underlay"></div>
+<script>
+/*for source and licence see https://github.com/davidbstein/header-hider */
+!function(){var i=function(){if(this.scrollY=0,this.old_scroll=window.onscroll,this.header=document.getElementsByTagName("header")[0],null==this.header)throw"in order to use the header hider you must have a <header>";this.header.style.transition="margin-top 0.2s ease-out 0s;",this.header_height=header.offsetHeight,this.hidden=!1,this.hide=function(){this.header.style.marginTop=-this.header_height+"px",this.hidden=!0}.bind(this),this.unhide=function(){this.header.style.marginTop=0,this.hidden=!1}.bind(this),this.unhide(),window.onscroll=function(){this.old_scroll&&this.old_scroll();var i=window.pageYOffset;i<64||i<this.scrollY?this.unhide():this.hide(),this.scrollY=i}.bind(this)};window.onload?window.onload=function(h){(void 0)(h),i()}:window.onload=i}();
+</script>
+
+
+
+<main aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <h1 class="post-title p-name" itemprop="name headline">How to build rich, styled input on the web</h1>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2015-12-22T00:00:00-05:00" itemprop="datePublished">Dec 22, 2015
+    </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">David Stein</span></span></p>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    Building rich text editing experiences on the web is tricky. Even adding simple features like bold and italics mean digging into some of the weird, old corners of the HTML standard. This post walks through the basics of how it's done.
+<!--more-->
+
+<script type="text/javascript" charset="utf-8" src="/static/external/jquery.js"></script>
+<style>
+iframe {
+  width: 100%;
+}
+
+.toc-item-section-id {
+    display: inline-block;
+    margin-right: 16px;
+    text-align: right;
+    width: 48px;
+}
+
+.toc-item-section-title {
+    display: inline-block;
+}
+
+.toc-item a:hover div {
+    text-decoration: underline;
+}
+
+a.section-id {
+    text-decoration: none;
+    color: white;
+    font-size: 0;
+}
+
+.table-of-contents {
+    border: 1px solid #777;
+    margin: 16px;
+    padding: 8px 0;
+}
+
+/* end Tomorrow Night*/
+
+</style>
+<div id="content-wrapper-fg">
+
+<div><div class="table-of-contents"><div class="toc-item"><a href="#section-1"><div class="toc-item-section-id">1</div><div class="toc-item-section-title">Getting to know  contenteditable</div></a></div><div class="toc-item"><a href="#section-2"><div class="toc-item-section-id">2</div><div class="toc-item-section-title">Setting up a text input</div></a></div><div class="toc-item"><a href="#section-2.1"><div class="toc-item-section-id">2.1</div><div class="toc-item-section-title">Restricting input to plain text</div></a></div><div class="toc-item"><a href="#section-2.2"><div class="toc-item-section-id">2.2</div><div class="toc-item-section-title">Finding the cursor</div></a></div><div class="toc-item"><a href="#section-2.3"><div class="toc-item-section-id">2.3</div><div class="toc-item-section-title">Handling pasted content</div></a></div><div class="toc-item"><a href="#section-3"><div class="toc-item-section-id">3</div><div class="toc-item-section-title">Putting it together: building a rich text input area</div></a></div><div class="toc-item"><a href="#section-3.1"><div class="toc-item-section-id">3.1</div><div class="toc-item-section-title">Preserving cursor position</div></a></div><div class="toc-item"><a href="#section-4"><div class="toc-item-section-id">4</div><div class="toc-item-section-title">next post: adding emoji / auto-complete</div></a></div></div><div class="text-document"><div><h1 class="header"><span>Making rich text input for the web.</span></h1><p class="p"><strong class="strong"><span>tl;dr:</span></strong><span> Here</span><span>'</span><span>s an </span><a class="link" href="example7.html" title="" target="_blank"><span>example</span></a><span>. Here</span><span>'</span><span>s the </span><a class="link" href="/source-code-viewer.html#/assets/2015/rich_input/example7.html" title="" target="_blank"><span>source</span></a><span>.</span></p><p class="p"><span>I recently set out to build a rich input box, assuming some googling and stack overflow articles would be enough to get started. I found a lot of content on how bad the tools the browser gives you are. I found less help on how to get started building something. This is an attempt to document my initial learnings from building simple rich text editing on the web.</span></p><p class="p"><span>There are two big parts of building a rich editing experience. The first is detecting the content a user inputs, the second is displaying that content. I knew enough CSS and HTML to get content on a page; this post focuses mostly on capturing input cleanly.</span></p><p class="p"><span>A kind-of-standard for managing user input is the </span><code class="hljs">contenteditable</code><span> attribute, which as far as I can tell is an artifact of an Internet Explorer 5.5 feature for editing emails in Outlook Online. The feature was </span><a class="link" href="https://bugzilla.mozilla.org/show_bug.cgi?id=97284" title="" target="_blank"><span>sort-of-cloned</span></a><span> by other browsers. It</span><span>'</span><span>s </span><a class="link" href="https://codemirror.net/doc/internals.html" title="" target="_blank"><span>bug ridden</span></a><span> at best and </span><a class="link" href="https://medium.com/medium-eng/why-contenteditable-is-terrible-122d8a40e480" title="" target="_blank"><span>broken by design</span></a><span> at worst. It</span><span>'</span><span>s also very powerful if you can avoid the messy parts.</span></p><p class="p"><span>There many great </span><a class="link" href="https://github.com/ajaxorg/ace" title="" target="_blank"><span>open</span></a><span> </span><a class="link" href="https://codemirror.net/" title="" target="_blank"><span>source</span></a><span> </span><a class="link" href="https://github.com/dropbox/hackpad" title="" target="_blank"><span>projects</span></a><span> that have a robust approach to fully-featured rich text editing. I was more interested in building some basic functionality (autocomplete and at-mentioning) without loading an entire text editor before page load.</span></p><hr class="horizontal-rule"><h2 class="header"><a name="section-1" class="section-id">1</a><span>Getting to know </span><code class="hljs">contenteditable</code></h2><p class="p"><span>It</span><span>'</span><span>s worth playing with </span><code class="hljs">contenteditable</code><span> a little.</span></p><p class="p"><span>I</span><span>'</span><span>ve iframe</span><span>'</span><span>d in an div with the contenteditable flag set, I</span><span>'</span><span>d recommend using the link beneath it to try it in a new tab. Here are some things to try:</span></p><ul class="list"><li class="li"><p class="p"><span>type into the box.</span></p></li><li class="li"><p class="p"><span>copy and paste part of a website. Images, formatting, potentially some javascript (</span><code class="hljs ini"><span class="hljs-setting">onclick=<span class="hljs-value"></span></span></code><span>, for example)</span></p></li><li class="li"><p class="p"><span>copy something with complex CSS (ie, explicit positioning). Stuff can escape the box.</span></p></li></ul><pre class="codeblock-wrapper"><code class="codeblock hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">contenteditable</span>=<span class="hljs-value">"true"</span>&gt;</span>
+      editable content!
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre><div class="html"><iframe src="/assets/2015/rich_input/example1.html" sandbox="">
+   this must be multiple lines
+</iframe>
+<div style="float:right">
+<a href="/assets/2015/rich_input/example1.html" target="_blank">example1.html</a>
+( <a href="/source-code-viewer.html#/assets/2015/rich_input/example1.html" target="_blank">full source</a> )
+</div>
+<div style="clear:both"></div></div><h2 class="header"><a name="section-2" class="section-id">2</a><span>Setting up a text input</span></h2><p class="p"><span>My first goal is to build something that behaves like a </span><code class="hljs">textarea</code><span>. Pretty much any box that allows only text input and has a cursor location will work. I</span><span>'</span><span>m going to use a </span><code class="hljs">div</code><span> with the </span><code class="hljs">contenteditable</code><span> flag set to manage the cursor, and then restrict behavior to only allow plain text.</span></p><h3 class="header"><a name="section-2.1" class="section-id">2.1</a><span>Restricting input to plain text</span></h3><p class="p"><span>Starting with the box in the first example, I now want to restrict the contents of the box to </span><em class="em"><span>only be text</span></em><span>. On some webkit browsers the attr </span><code class="hljs ini"><span class="hljs-setting">contenteditable=<span class="hljs-value"><span class="hljs-string">"plaintext-only"</span></span></span></code><span> does this; not all browsers are webkit.</span></p><p class="p"><span>My approach is to capture any insertion that </span><em class="em"><span>isn</span><span>'</span><span>t a single character resulting from a keystroke</span></em><span> and define some custom behavior. This means I need to detect </span><strong class="strong"><span>drag/drop</span></strong><span> and </span><strong class="strong"><span>paste</span></strong><span> events. According to the docs these insertions always trigger </span><a class="link" href="http://www.w3.org/TR/2008/WD-html5-20080610/editing.html#paste" title="" target="_blank"><span>a drop event</span></a><span>. In practice, I need to listen for </span><code class="hljs">paste</code><span> events as well.</span></p><pre class="codeblock-wrapper"><code class="codeblock hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">paste_event_handler</span>(<span class="hljs-params">e</span>)</span>{
+  <span class="hljs-keyword">var</span> raw_text, raw_data, paste_data;
+
+  <span class="hljs-comment">// prevent the paste from happening</span>
+  e.preventDefault();
+
+  <span class="hljs-comment">// try to get the data from a DragEvent</span>
+  raw_data = e.dataTransfer;
+
+  <span class="hljs-comment">// fall back to data from a ClipboardEvent</span>
+  paste_data = e.clipboardData;
+  raw_data = raw_data || paste_data;
+
+  <span class="hljs-comment">// extract the raw text from the pasted data</span>
+  raw_text = raw_data.getData(<span class="hljs-string">"Text"</span>);
+  <span class="hljs-built_in">console</span>.log(raw_text);
+};
+
+<span class="hljs-comment">// set up listeners for `drop` and `paste` events</span>
+<span class="hljs-keyword">var</span> editable_div = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"my-editable-div"</span>);
+editable_div.addEventListener(<span class="hljs-string">"drop"</span>, paste_event_handler);
+editable_div.addEventListener(<span class="hljs-string">"paste"</span>, paste_event_handler);
+</code></pre><div class="html"><iframe src="/assets/2015/rich_input/example2.html" sandbox="allow-scripts">
+</iframe>
+<div style="float:right">
+<a href="/assets/2015/rich_input/example2.html" target="_blank">example2.html</a>
+( <a href="/source-code-viewer.html#/assets/2015/rich_input/example2.html" target="_blank">full source</a> )
+</div>
+<div style="clear:both"></div></div><blockquote class="blockquote"><p class="p"><span>Here</span><span>'</span><span>s an experiment that suppresses any input that isn</span><span>'</span><span>t normal typing, instead logging the content to the console. No need to open a dev console, output is captured and displayed on the page. On most browsers, drag-drop from outside an iFrame is suppressed.</span></p></blockquote><h3 class="header"><a name="section-2.2" class="section-id">2.2</a><span>Finding the cursor</span></h3><p class="p"><span>According to the </span><a class="link" href="http://www.w3.org/TR/2008/WD-html5-20080610/editing.html" title="" target="_blank"><span>w3c working draft</span></a><span>, when an editable element has focus it has a cursor or selection. You can check on the cursor or selection</span><span>'</span><span>s position programmatically.</span></p><p class="p"><span>Before inserting content at the cursor, I needed to understand the structure of selection ranges and how to manipulate them. I</span><span>'</span><span>ll review the basics, but you can </span><a class="link" href="#section-2.3" title=""><span>skip ahead</span></a><span>.</span></p><h4 class="header"><span>Nodes, Selections, and Ranges</span></h4><p class="p"><span>The content of a div is composed of a set of </span><a class="link" href="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/Node.html" title="" target="_blank"><span>Nodes</span></a><span> (as is the rest of the DOM). For my purposes there are two types of nodes:</span></p><ul class="list"><li class="li"><p class="p"><strong class="strong"><span>text nodes</span></strong><span> - blocks of text. don</span><span>'</span><span>t have any additional markup</span></p></li><li class="li"><p class="p"><strong class="strong"><span>elements</span></strong><span> - the DOM nodes we manipulate all the time (divs, spans, etc)</span></p></li></ul><p class="p"><span>If there is focus on the page, it is represented as a </span><code class="hljs">Range</code><span>. A range has a start location and an end location, called </span><a class="link" href="http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position" title="" target="_blank"><span>boundary points</span></a><span>). A boundary point is defined by a node and an offset.</span></p><p class="p"><span>In a text node a </span><em class="em"><span>boundary point</span></em><span> is effectively an index into a string: the boundary point is immediately after the </span><span>&lt;</span><code class="hljs">offset</code><span>&gt;th character in the string (or before the first char if offset = 0).</span></p><p class="p"><span>In an elements, the boundary point lies between nodes immediately after the </span><span>&lt;</span><code class="hljs">offset</code><span>&gt;th child node.</span></p><p class="p"><span>I found this easier to understand after playing with it, I</span><span>'</span><span>ve written a tool for playing with boundary points. Different browsers will behave slightly differently along the boundaries between nodes, but the way in which indexing works should stay the same.</span></p><p class="p"><span>In this demo, there is a graphical representation of the nodes, with red and green dots at the boundary points when the box has focus.</span></p><pre class="codeblock-wrapper"><code class="codeblock hljs xml"><span class="hljs-comment">&lt;!-- raw html from example --&gt;</span>
+  try
+  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: red"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">b</span>&gt;</span> highlight<span class="hljs-tag">&lt;/<span class="hljs-title">b</span>&gt;</span>
+    ing or clicking parts of
+  <span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+  this sentence
+</code></pre><div class="html"><iframe src="/assets/2015/rich_input/example3.html" style="height:320px" sandbox="allow-scripts">
+</iframe>
+<a href="/assets/2015/rich_input/example3.html" target="_blank" style="float:right">example3.html</a>
+<div style="clear:both"></div></div><p class="p"><span>Notice that </span><span>"</span><span>this</span><span>"</span><span> and </span><span>"</span><span>sentence</span><span>"</span><span> are different nodes even though they are the same chunk of HTML. Try typing, and using ctrl+i and ctrl+b to bold and italify text. Depending on your browser, you may be able to position boundary points </span><em class="em"><span>between</span></em><span> the text nodes or element boundaries. Each browser is a little different in their implementation of this behavior.</span></p><blockquote class="blockquote"><p class="p"><span>The </span><code class="hljs">normalize</code><span> function tries to join text</span><span>_</span><span>nodes when they appear next to each other. You can call it on a parent node that contains multiple child nodes.</span></p></blockquote><h4 class="header"><span>List of useful commands for manipulating selection ranges</span></h4><p class="p"><span>I need to manipulate selection ranges as I mutate the div to make the text </span><span>"</span><span>rich</span><span>"</span><span>. The selection and range APIs can do a lot of things - these are the fields and functions I use over the rest of this post to work with selections.</span></p><ul class="list"><li class="li"><p class="p"><code class="hljs coffeescript"><span class="hljs-built_in">document</span>.getSelection()</code></p><p class="p"><span>Returns a </span><code class="hljs">Selection</code><span>, which represents the current selection in the document; contains zero or more </span><code class="hljs">Range</code><span>'</span><span>s</span></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-tag">Selection</span><span class="hljs-class">.rangeCount</span></code></p><p class="p"><span>the number of </span><code class="hljs">Range</code><span>'</span><span>s in the selection. This is either 0 or 1 in almost every practical situation.</span></p><p class="p"><em class="em"><span>There are some rare cases when </span><code class="hljs cpp">rangeCount &gt; <span class="hljs-number">1</span></code><span>. The most common is when the user selects some text with one input device (ie, a mouse) and then moves focus with another device (ie, hitting tab on a keyboard) - resulting in two selection ranges. For this post, I</span><span>'</span><span>ll assume that there is at most one range. In practice you will have to handle higher </span><code class="hljs">rangeCount</code><span>s by checking which elements have focus.</span></em></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.startContainer</span></code><span>, </span><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.startOffset</span></code><span>, </span><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.endContainer</span></code><span>, </span><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.endOffset</span></code></p><p class="p"><span>The (node, offset) pairs defining a range.</span></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.deleteContents</span>()</code></p><p class="p"><span>Delete the content between the boundaries, removing any nodes that are contained completely between those two points.</span></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.insertNode</span>(<span class="hljs-tag">node</span>)</code></p><p class="p"><span>Inserts a node immediately after the start boundary, splitting any text nodes into multiple nodes and pushing any other boundary points to the end of the inserted node.</span></p><p class="p"><em class="em"><span>before insert</span></em><span> - </span><code class="hljs apache"><span class="hljs-tag">&lt;start1&gt;</span><span class="hljs-tag">&lt;start2&gt;</span><span class="hljs-tag">&lt;end1&gt;</span></code><span> </span><strong class="strong"><span>content</span></strong><span> </span><code class="hljs apache"><span class="hljs-tag">&lt;end2&gt;</span></code></p><p class="p"><em class="em"><span>after insert</span></em><span> - </span><code class="hljs apache"><span class="hljs-tag">&lt;start1&gt;</span></code><span> </span><span>&lt;</span><span>INSERTED</span><span>_</span><span>NODE&gt; </span><code class="hljs apache"><span class="hljs-tag">&lt;start2&gt;</span><span class="hljs-tag">&lt;end1&gt;</span></code><span> </span><strong class="strong"><span>content</span></strong><span> </span><code class="hljs apache"><span class="hljs-tag">&lt;end2&gt;</span></code></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.setStart</span>(<span class="hljs-tag">node</span>, <span class="hljs-tag">offset</span>)</code><span>, </span><code class="hljs css"><span class="hljs-tag">Range</span><span class="hljs-class">.setEnd</span>(<span class="hljs-tag">node</span>, <span class="hljs-tag">offset</span>)</code></p><p class="p"><span>Adjust the boundaries.</span></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-tag">Node</span><span class="hljs-class">.normalize</span>()</code></p><p class="p"><span>Combine adjacent child text nodes into a single node.</span></p></li></ul><h3 class="header"><a name="section-2.3" class="section-id">2.3</a><span>Handling pasted content</span></h3><p class="p"><span>Using this API, I add functionality for pasting and dropping content back into the input box. I </span><em class="em"><span>only insert the text</span></em><span>, ignoring styling and formatting.</span></p><pre class="codeblock-wrapper"><code class="codeblock hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_range</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> sel = <span class="hljs-built_in">document</span>.getSelection();
+  <span class="hljs-comment">// rangeCount is 0 if nothing is selected (ie, we do</span>
+  <span class="hljs-comment">// not have user focus)</span>
+  <span class="hljs-keyword">if</span> (sel.rangeCount === <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-comment">// if the browser allows multiple simultaneous selections,</span>
+  <span class="hljs-comment">// much of this example needs to be fancier. Luckily most</span>
+  <span class="hljs-comment">// browsers don't allow that while editing text.</span>
+  <span class="hljs-keyword">return</span> sel.getRangeAt(<span class="hljs-number">0</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insert_text_at_cursor</span>(<span class="hljs-params">text</span>)</span>{
+  <span class="hljs-comment">// get user selection, if there is any</span>
+  <span class="hljs-keyword">var</span> range = get_range();
+  <span class="hljs-keyword">if</span> (!range) <span class="hljs-keyword">return</span>;
+
+  <span class="hljs-comment">// delete the selection if needed</span>
+  range.deleteContents();
+
+  <span class="hljs-comment">// insert text</span>
+  <span class="hljs-keyword">var</span> text_node = <span class="hljs-built_in">document</span>.createTextNode(text);
+  range.insertNode(text_node);
+
+  <span class="hljs-comment">// the "start" of our range is now before the inserted text,</span>
+  <span class="hljs-comment">// we need to move it to the end...</span>
+  range.setStart(range.endContainer, range.endOffset);
+
+  <span class="hljs-comment">// ...and then force user focus to that range</span>
+  <span class="hljs-built_in">document</span>.getSelection().removeAllRanges()
+  <span class="hljs-built_in">document</span>.getSelection().addRange(range)
+}
+
+</code></pre><div class="html"><iframe src="/assets/2015/rich_input/example4.html" style="height:54px" sandbox="allow-scripts">
+</iframe>
+<div style="float:right">
+<a href="/assets/2015/rich_input/example4.html" target="_blank">example4.html</a>
+( <a href="/source-code-viewer.html#/assets/2015/rich_input/example4.html" target="_blank">full source</a> )
+</div>
+<div style="clear:both"></div></div><p class="p"><span>Some things are not suppressed here: a user can still add emphasis to text on most user agents (ctrl+b on desktop, for example). Rather than catching those cases, I am going to add some heavy-handed formatting logic that overwrites any of the formatting behavior provided by the user agent.</span></p><p class="p"></p><div class="html"><a name="cursor"></a></div><div class="html"></div><p></p><h2 class="header"><a name="section-3" class="section-id">3</a><span>Putting it together: building a rich text input area</span></h2><p class="p"><span>Now that I have a </span><span>"</span><code class="hljs">textarea</code><span>"</span><span>  that mostly works, I</span><span>'</span><span>m ready to add some intelligence. For my demo I</span><span>'</span><span>d like to </span><strong class="strong"><span>turn @-mentions blue</span></strong><span>.</span></p><p class="p"><span>As a starting point, I just reformat the text after each keystroke. This doesn</span><span>'</span><span>t preserve cursor position. The textarea is almost unusable with the cursor jumping all over the place.</span></p><h4 class="header"><span>Simple replacement code</span></h4><pre class="codeblock-wrapper"><code class="codeblock hljs javascript"><span class="hljs-keyword">var</span> AT_MENTION_REGEX = <span class="hljs-regexp">/((?!\w)@[\w]+)/g</span>;
+
+<span class="hljs-comment">/*
+* Highlight @-mentions in the most naïve way
+* possible - rebuild the entire div, clear
+* and replace. Highly recommend you do something
+* more efficient in practice :-)
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">format_content</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-comment">// editable_div is the editable DOM element</span>
+  <span class="hljs-comment">// (see example 2 and onwards)</span>
+  <span class="hljs-keyword">var</span> raw_content = editable_div.textContent;
+  editable_div.innerHTML = raw_content.replace(
+    AT_MENTION_REGEX,
+    <span class="hljs-string">"&lt;span style='color:cyan'&gt;$1&lt;/span&gt;"</span>
+  );
+}
+
+editable_div.addEventListener(<span class="hljs-string">"keyup"</span>, format_content);
+</code></pre><div class="html"><iframe src="/assets/2015/rich_input/example5.html" style="height:54px" sandbox="allow-scripts">
+</iframe>
+<div style="float:right">
+<a href="/assets/2015/rich_input/example5.html" target="_blank">example5.html</a>
+( <a href="/source-code-viewer.html#/assets/2015/rich_input/example5.html" target="_blank">full source</a> )
+</div>
+<div style="clear:both"></div></div><h3 class="header"><a name="section-3.1" class="section-id">3.1</a><span>Preserving cursor position</span></h3><p class="p"><span>One way to avoid moving focus when mutating an editable region is to mark the cursor position. As three as the text is preserved, the markers should be as well. I do this in three steps</span></p><ol class="list"><li class="li"><p class="p"><span>mark the beginning and end of the selection ranges using unique characters</span></p></li><li class="li"><p class="p"><span>mutate the contents</span></p></li><li class="li"><p class="p"><span>restore the selection and remove the markers</span></p></li></ol><p class="p"><span>This breaks if the delimiter characters appear elsewhere in the content being edited. I work around this problem using </span><a class="link" href="https://en.wikipedia.org/wiki/Private_Use_Areas" title="" target="_blank"><span>private use unicode characters</span></a><span>. I enforce that two reserved characters are never used in the textarea, that way I can use them as markers.</span></p><h5 class="header"><span>Add calls to mark and restore the cursor</span></h5><p class="p"><span>I start by adding </span><code class="hljs">mark_cursor</code><span> and </span><code class="hljs">restore_cursor</code><span> functions to the code from above.</span></p><pre class="codeblock-wrapper"><code class="codeblock hljs javascript"><span class="hljs-comment">// set the markers</span>
+<span class="hljs-keyword">var</span> START_RANGE_MARKER = <span class="hljs-string">"\u0091"</span>
+<span class="hljs-keyword">var</span> END_RANGE_MARKER = <span class="hljs-string">"\u0092"</span>
+
+<span class="hljs-comment">// messy regex hack to stop the cursor from interfering</span>
+<span class="hljs-comment">// with matching mentions - in practice we should remove</span>
+<span class="hljs-comment">// the cursor markers before doing tokenization logic.</span>
+<span class="hljs-keyword">var</span> AT_MENTION_REGEX = <span class="hljs-regexp">/((?!\w)@[\w\u0091\u0092]+)/g</span>
+
+<span class="hljs-comment">/*
+* Highlight @-mentions in the most naïve way possible - rebuild
+* the entire div, clear and replace. Highly recommend you
+* do something more efficient :-)
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">format_content</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> raw_content;
+  mark_cursor(); <span class="hljs-comment">// implemented below</span>
+  raw_content = editable_div.textContent;
+  editable_div.innerHTML = raw_content.replace(
+    AT_MENTION_REGEX,
+    <span class="hljs-string">"&lt;span style='color:cyan'&gt;$1&lt;/span&gt;"</span>
+  );
+  restore_cursor(); <span class="hljs-comment">// implemented below</span>
+}
+</code></pre><h5 class="header"><span>Cursor marking function</span></h5><p class="p"><span>I get the Selection and Range, and mark them with my reserved characters. Since the function above doesn</span><span>'</span><span>t remove characters, these will remain even after we format the text.</span></p><p class="p"><span>For this example I use a helper function to insert the markers, in practice I use the same helper function to handle pasted text.</span></p><pre class="codeblock-wrapper"><code class="codeblock hljs javascript"><span class="hljs-comment">/*
+* marks the current location of the cursor or selection
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mark_cursor</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> range = get_range();
+  <span class="hljs-comment">// The order matters here!</span>
+  <span class="hljs-comment">// See the notes on how Node.insertCursor() works</span>
+  <span class="hljs-comment">// above.</span>
+  _insert_char(END_RANGE_MARKER,
+    range.endContainer, range.endOffset);
+  _insert_char(START_RANGE_MARKER,
+    range.startContainer, range.startOffset);
+}
+
+<span class="hljs-comment">/*
+* inserts a char into a text node (@container) at a given offset
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_insert_char</span>(<span class="hljs-params">char, container, offset</span>)</span>{
+  <span class="hljs-keyword">var</span> cursor, node;
+  cursor = <span class="hljs-built_in">document</span>.createRange();
+  cursor.setStart(container, offset);
+  node = <span class="hljs-built_in">document</span>.createTextNode(char);
+  cursor.insertNode(node);
+}
+</code></pre><h5 class="header"><span>Cursor restoring function</span></h5><p class="p"><span>I use a helper method to find the position of a given character before removing it, and use this to restore the selection.</span></p><pre class="codeblock-wrapper"><code class="codeblock hljs javascript"><span class="hljs-comment">/*
+* restore the cursor or selection placed by `mark_cursor`
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">restore_cursor</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> temp, range, start_node,
+      start_offset, end_node, end_offset;
+
+  range = <span class="hljs-built_in">document</span>.createRange()
+
+  temp = _find_and_remove_marker(START_RANGE_MARKER, editable_div);
+  start_node = temp[<span class="hljs-number">0</span>];
+  start_offset = temp[<span class="hljs-number">1</span>];
+
+  temp = _find_and_remove_marker(END_RANGE_MARKER, editable_div);
+  end_node = temp[<span class="hljs-number">0</span>];
+  end_offset = temp[<span class="hljs-number">1</span>];
+
+  range.setStart(start_node, start_offset);
+  range.setEnd(end_node, end_offset);
+
+  sel = <span class="hljs-built_in">document</span>.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+<span class="hljs-comment">/*
+* Note: TreeWalker provides a more succinct and efficient way to
+* search the node tree. In an attempt to minimize the number of
+* APIs used, I'm doing some simple recursion to walk to tree
+*/</span>
+<span class="hljs-comment">/*
+* this method finds the first instance of @marker in @root_node,
+* removes it, and returns the container node and offset of the
+* location being marked as a tuple
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_find_and_remove_marker</span>(<span class="hljs-params">marker, root_node</span>)</span>{
+  <span class="hljs-keyword">var</span> node, i, offset, result, children;
+  <span class="hljs-keyword">if</span> (root_node.nodeValue != <span class="hljs-literal">null</span>){
+    offset = root_node.nodeValue.indexOf(marker);
+    <span class="hljs-keyword">if</span> (offset &gt;= <span class="hljs-number">0</span>) {
+      root_node.nodeValue =
+        root_node.nodeValue.substr(<span class="hljs-number">0</span>, offset) +
+        root_node.nodeValue.substr(offset+<span class="hljs-number">1</span>);
+      <span class="hljs-keyword">return</span> [root_node, offset];
+    }
+  } <span class="hljs-keyword">else</span> {
+    children = root_node.childNodes;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> children){
+      node = children[i];
+      result = _find_and_remove_marker(marker, node);
+      <span class="hljs-keyword">if</span> (result != <span class="hljs-literal">null</span>)
+        <span class="hljs-keyword">return</span> result
+    }
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+}
+</code></pre><h5 class="header"><span>Finished </span><span>"</span><span>textarea</span><span>"</span><span> with highlighted at-mentions</span></h5><div class="html"><iframe src="/assets/2015/rich_input/example6.html" style="height:54px" sandbox="allow-scripts">
+</iframe>
+<div style="float:right">
+<a href="/assets/2015/rich_input/example6.html" target="_blank">example6.html</a>
+( <a href="/source-code-viewer.html#/assets/2015/rich_input/example6.html" target="_blank">full source</a> )
+</div>
+<div style="clear:both"></div></div><h4 class="header"><span>Caveats and Gotchas</span></h4><ul class="list"><li class="li"><p class="p"><span>instead of </span><a class="link" href="https://w3c.github.io/editing/contentEditableTrue.html" title="" target="_blank"><code class="hljs ini"><span class="hljs-setting">contenteditable=<span class="hljs-value"><span class="hljs-string">"true"</span></span></span></code></a><span>, </span><a class="link" href="http://w3c.github.io/editing/contentEditable.html#caret-state" title="" target="_blank"><code class="hljs ini"><span class="hljs-setting">contenteditable=<span class="hljs-value">typing</span></span></code></a><span> may be the right choice, but I haven</span><span>'</span><span>t played with it enough.</span></p></li><li class="li"><p class="p"><span>undo is broken in these examples. There is a thing called </span><a class="link" href="http://www.w3.org/TR/2008/WD-html5-20080610/editing.html#undomanager" title="" target="_blank"><span>UndoManager</span></a><span> that can help. It would need its own post. I</span><span>'</span><span>m ignoring it for this example.</span></p></li><li class="li"><p class="p"><span>Things like what happens when you hit enter (newline? </span><code class="hljs apache"><span class="hljs-tag">&lt;br&gt;</span></code><span>? </span><code class="hljs apache"><span class="hljs-tag">&lt;p&gt;</span></code><span>?) are TOTALLY DIFFERENT in different browsers. I don</span><span>'</span><span>t handle line breaks correctly in these examples.</span></p></li><li class="li"><p class="p"><span>Every user agent has it</span><span>'</span><span>s own pile of legacy methods. The fiddle-till-it-works approach ends badly.</span></p></li><li class="li"><p class="p"><code class="hljs css"><span class="hljs-attr_selector">[selection]</span><span class="hljs-class">.anchorNode</span></code><span> is a thing. </span><code class="hljs css"><span class="hljs-attr_selector">[selection]</span><span class="hljs-class">.baseNode</span></code><span> is only a thing in some user agents.</span></p></li></ul><h2 class="header"><a name="section-4" class="section-id">4</a><span>next post: adding emoji / auto-complete</span></h2><p class="p"><span>part 2 coming roughly </span><span>"</span><span>when I get around to writing it</span><span>"</span></p><div class="html"></div></div></div></div>
+
+
+
+
+
+
+      </div>
+  </div>
+
+  <a class="u-url" href="/programming/2015/12/22/rich-input.html" hidden></a>
+</article>
+
+      </div>
+    </main>
+
+
+    <footer>Copyright (c) David Stein</footer>
+  </body>
+
+</html>

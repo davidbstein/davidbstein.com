@@ -1,0 +1,195 @@
+/*
+body {
+    background: #eee9f5;
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-size: 24px;
+    font-family: sans-serif;
+}*/
+
+
+div#container {
+    background: white;
+    padding: 16px 28px;
+    box-shadow: 3px 3px 2px 1px #ccc;
+}
+
+/************ CONTROLS ***********/
+
+div#controls {
+    justify-content: center;
+    align-content: center;
+    /* display: flex; */
+    border: 5px solid #888;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+
+div#controls div {
+    margin: 32px;
+}
+
+button:hover {
+    background: #b9a6d0;
+    border-color: #777;
+}
+
+button:active {
+    background: #d8cbe6;
+    border-color: #711a1a;
+}
+
+button.symbutton {
+    width: 36px;
+}
+
+button {
+    color:white;
+    background:#996cce;
+    font-weight: 900;
+    font-size: 24px;
+    border-radius: 11px;
+    height: 36px;
+    line-height: 24px;
+    border: 4px solid black;
+}
+
+input[type="text"] {
+    font-weight: 400;
+    font-size: 24px;
+    border-radius: 11px;
+    height: 36px;
+    line-height: 24px;
+    border: 4px solid black;
+    padding: 8px;
+}
+
+/*********** BOARD ************/
+
+input#keyboard-forcer {
+    border: none;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    color: white;
+}
+
+div#puzzle-board {
+    border: 3px solid black;
+    width: fit-content;
+    width: max-content;
+    margin: 0 auto;
+}
+
+div.box-row{
+    white-space: nowrap;
+}
+
+div.box.blocked {
+    background: black;
+    color: red;
+}
+
+div.box.blocked:hover {
+    background: #505050;
+}
+
+div.box {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #9b9b9b;
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    line-height: 48px;
+    font-size: 36px;
+    cursor: default;
+    overflow: hidden;
+}
+
+div.box.selected {
+    background: #ebe36d;
+    border-color: #000000;
+    color: #141400;
+}
+
+div.box.next {
+    background: #cfeeff;
+    border-color: #1e7ccb;
+    color: #000714;
+}
+
+div.box.selected:hover {
+    background: #d4d4b6;
+}
+
+div.box.next:hover {
+    background: #94aab7;
+}
+
+div.box.blocked.selected {
+    background: #5a5a3a;
+    border-color: #cbb01e;
+    color: #141400;
+}
+
+div.box.blocked.next {
+    background: #364b56;
+    border-color: #1e7ccb;
+    color: #000714;
+}
+
+div.box:hover {
+    background: #ddd;
+}
+
+/********** LINKS **********/
+
+div#puzzle-list-area {
+    margin: 32px 0px;
+    border: 3px solid #888;
+    padding: 16px;
+    background: #efe9f6;
+}
+
+.puzzle_link {
+    margin: 16px;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+
+.puzzle_link:hover {
+    cursor: pointer;
+    background: #e7d4f4;
+    text-decoration: underline;
+}
+
+#share-puzzle-area {
+    margin: 32px 0px;
+    border: 3px solid #888;
+    padding: 16px;
+    background: #efe9f6;
+}
+textarea {
+    width: 100%;
+    height: 11em;
+    margin: 32px 0;
+}
+/**
+PLACEHOLDERS
+**/
+
+
+div#controls div {}
+
+div#size-select-area {}
+
+div#set-name-area {}
+
+div#puzzle-board-area {
+    margin: 64px 0px;
+}
