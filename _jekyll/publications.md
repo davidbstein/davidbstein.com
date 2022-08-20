@@ -34,7 +34,7 @@ permalink: /publications/
 
 ## Theses
 
-David Stein, **Efficient Homomorphically Encrypted Privacy-Preserving Automated Biometric Recognition**, _MIT M. Eng. Thesis_ (Sept. 2020)
+[David Stein, **Efficient Homomorphically Encrypted Privacy-Preserving Automated Biometric Recognition**, _MIT M. Eng. Thesis_ (Sept. 2020)](https://dspace.mit.edu/handle/1721.1/130608)
 
 [
 David Stein, **Constraint-Aware Coordinated Robotic Construction of Generic Structures**,  _MIT M. Eng. Thesis_ (not filed - see linked note) (June 2011)
