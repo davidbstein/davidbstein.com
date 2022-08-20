@@ -26,7 +26,7 @@ permalink: /about/
   }
 </style>
 
-I currently live in NYC and am a research scholar at NYU Law School at the [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team) and [Information Law Institute](https://www.law.nyu.edu/centers/ili/people).  I also do some contract work helping with large-scale data collection and analytics, and a little bit of angel investing.
+I currently live in NYC and am a research scholar at NYU Law's [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team) and [Information Law Institute](https://www.law.nyu.edu/centers/ili/people).  I also do some contract work helping with large-scale data collection and analytics, and a little bit of angel investing.
 
 I was a tech lead at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a> from 2017 - 2019, where I worked on data security, privacy, and "smart" street grids.
 
