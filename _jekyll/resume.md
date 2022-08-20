@@ -4,6 +4,6 @@ title: resume
 permalink: /resume
 ---
 
-My resume was last updated in January 2021.
+My resume was last updated in Spring 2022.
 
-[download pdf](/static/resume.pdf)
+[download pdf](/assets/documents/resume.pdf)
