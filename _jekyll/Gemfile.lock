@@ -61,6 +61,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   jekyll (~> 3.8.5)
@@ -68,4 +69,4 @@ DEPENDENCIES
   minima (~> 2.0)
 
 BUNDLED WITH
-   2.4.12
+   2.4.13

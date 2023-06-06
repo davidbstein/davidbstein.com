@@ -36,7 +36,7 @@ I was a software engineer at <a href="https://dropbox.com" title="" target="_bla
 
 From 2009-2011 I did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures. In 2020, I returned briefly to write my Master's thesis, demonstrating a novel approach to homomorphically encrypted biometric recognition.
 
-![visual resume](/assets/images/2020-visual resume.png){: .visual-resume}
+![visual resume](/assets/images/2022-visual-resume.png){: .visual-resume}
 {: .wide-img}
 
 [Resume](/resume) - [Publications](/publications)
