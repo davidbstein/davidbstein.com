@@ -8,6 +8,8 @@ I don't update this much and I keep forgetting how to build it or find myself on
 
 ### Dependencies
 
+TODO: I should figure out virtualenvs for ruby at some point.
+
  - (`fish`)[https://fishshell.com/]
  - (`jekyll`)[https://jekyllrb.com/docs/installation/#requirements]
    - _ubuntu notes_
