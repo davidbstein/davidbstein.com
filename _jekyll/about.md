@@ -26,20 +26,16 @@ permalink: /about/
   }
 </style>
 
-I currently live in NYC and am a research scholar at NYU Law affiliated with the [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team) and the [Information Law Institute](https://www.law.nyu.edu/centers/ili/people). I co-teach a seminar on [global tech law](https://its.law.nyu.edu/courses/description.cfm?id=32595).   Outside of the law school, I do some contract work helping with large-scale data collection and analytics, and a little bit of angel investing.
+I currently live in NYC and work at NYU Law School. At NYU, I'm a research scholar at the [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team) a fellow at the [Information Law Institute](https://www.law.nyu.edu/centers/ili/people), and I co-teach a seminar on [global tech law](https://its.law.nyu.edu/courses/description.cfm?id=32595) as an adjunct. Outside of the law school, I do some contract work helping with large-scale data collection and analytics, and a little bit of angel investing.
 
-I was a tech lead at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a> from 2017 - 2019, where I worked on data security, privacy, and "smart" street grids.
-
-I was director of product engineering at <a href="https://www.braze.com/product/" title="" target="_blank">Braze</a> in 2016 and 2017.
-
-I was a software engineer at <a href="https://dropbox.com" title="" target="_blank">Dropbox</a> from 2011 - 2015. I focused mostly on making large-scale data analytics accessible to non-engineers. I also spent time on security incident response, prototyping, internal tools, and sales and support automation.
+I worked in tech for about a decade. I was a tech lead at <a href="http://sidewalklabs.com" target="_blank">Sidewalk Labs</a> from 2017 - 2019, where I worked on data security, privacy, and "smart" street grids. I was director of product engineering at <a href="https://www.braze.com/product/" title="" target="_blank">Braze</a> in 2016 and 2017. I was a software engineer at <a href="https://dropbox.com" title="" target="_blank">Dropbox</a> from 2011 - 2015. I focused mostly on making large-scale data analytics accessible to non-engineers, and also spent time on security incident response, prototyping, internal tools, and sales and support automation.
 
 From 2009-2011 I did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures. In 2020, I returned briefly to write my Master's thesis, demonstrating a novel approach to homomorphically encrypted biometric recognition.
 
 ![visual resume](/assets/images/2022-visual-resume.png){: .visual-resume}
 {: .wide-img}
 
-[Resume](/resume) - [Publications](/publications)
+[Publications](/publications)
 {: style="text-align: center;"}
 
 

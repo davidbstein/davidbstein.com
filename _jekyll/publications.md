@@ -11,6 +11,13 @@ permalink: /publications/
 
 # Publications
 
+## Law Review Article
+
+**Data Insecurity Law**,
+37 <span style="font-variant: small-caps;">Santa Clara High Tech. L.J.__ </span>
+(forthcoming)
+
+
 ## Peer Reviewed Publications
 
 [
