@@ -14,7 +14,7 @@ permalink: /publications/
 ## Law Review Article
 
 **Data Insecurity Law**,
-37 <span style="font-variant: small-caps;">Santa Clara High Tech. L.J.__ </span>
+<span style="font-variant: small-caps;">37 Santa Clara High Tech. L.J. __ </span>
 (forthcoming)
 
 
