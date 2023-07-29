@@ -14,9 +14,10 @@ permalink: /publications/
 ## Law Review Article
 
 **Data Insecurity Law**,
-<span style="font-variant: small-caps;">37 Santa Clara High Tech. L.J. __ </span>
+[
+<span style="font-variant: small-caps;">39 Santa Clara High Tech. L.J. __ </span>
 (forthcoming)
-
+](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4523433)
 
 ## Peer Reviewed Publications
 
@@ -54,21 +55,25 @@ David Stein, **Constraint-Aware Coordinated Robotic Construction of Generic Stru
 ](https://storage.googleapis.com/sidewalk-toronto-ca/wp-content/uploads/2019/09/03134040/MIDP-Volume-2-Chapter-5-Digital-Innovation-Accessible.pdf)
 
 ## Patents
-
 [
-David Stein, John Wittrock, **Methods, systems, and media for recovering identity information in verifiable claims-based systems**,
-U.S. Patent App.  16,704,602 (published Jun.  11, 2020)
-](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PG01&s1=20200186511.PGNR.)
+John Wittrock, David Stein, **Secure methods, systems, and media for generating and authenticating user credentials**,
+U.S. Patent 11,652,819 (issued May 16, 2023)
+](https://patentcenter.uspto.gov/applications/16513295)
 
 [
 David Stein, John Wittrock, **Identity systems, methods, and media for auditing and notifying users concerning verifiable claims**,
-U.S. Patent App.  16,704,544 (published Jun.  11, 2020)
-](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PG01&s1=20200186341.PGNR.)
+U.S. Patent 11,115,207 (issued Sept. 7, 2021)
+](https://patentcenter.uspto.gov/applications/16704544)
 
 [
-John Wittrock, David Stein, **Secure methods, systems, and media for generating and authenticating user credentials**,
-U.S. Patent App.  16,513,295 (published Jan.  16, 2020)
-](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PG01&s1=20200021588.PGNR.)
+David Stein, John Wittrock, **Methods, systems, and media for recovering identity information in verifiable claims-based systems**,
+U.S. Patent App.  17,460,860 (published Dev. 16, 2021)
+](https://patentcenter.uspto.gov/applications/17460860)
+
+[
+David Stein, Ryann Vilim, John Wittrock **Methods, systems, and media for secure authentication of users using one or more biometric recognition systems**,
+U.S. Patent App.  16,930,836 (published Jan 21, 2021)
+](https://patentcenter.uspto.gov/applications/16930836)
 
 [
 David Stein, **Authorization review system**,
@@ -82,5 +87,5 @@ U.S. Patent 9,235,636 (issued Jan.  12, 2016)
 
 [
 David Stein, **Unified interface for querying data in legacy databases and current databases**,
-U.S. Patent App.  13,737,322 (filed Jan.  9, 2013)
+U.S. Patent App.  13,737,322 (published July 10, 2014)
 ](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PG01&s1=20140195514.PGNR.)
