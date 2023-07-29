@@ -78,14 +78,14 @@ U.S. Patent App.  16,930,836 (published Jan 21, 2021)
 [
 David Stein, **Authorization review system**,
 U.S. Patent 9,497,253 (issued Nov.  15, 2016)
-](http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PALL&s1=9497253.PN.)
+](https://patentcenter.uspto.gov/applications/14249117)
 
 [
 David Stein, **Presenting data in response to an incomplete query**,
 U.S. Patent 9,235,636 (issued Jan.  12, 2016)
-](http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PALL&s1=9235636.PN.)
+](https://patentcenter.uspto.gov/applications/13722480)
 
 [
 David Stein, **Unified interface for querying data in legacy databases and current databases**,
 U.S. Patent App.  13,737,322 (published July 10, 2014)
-](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&p=1&u=/netahtml/PTO/srchnum.html&r=1&f=G&l=50&d=PG01&s1=20140195514.PGNR.)
+](https://patentcenter.uspto.gov/applications/13722480)
