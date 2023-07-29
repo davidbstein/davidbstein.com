@@ -71,7 +71,7 @@ U.S. Patent App.  17,460,860 (published Dev. 16, 2021)
 ](https://patentcenter.uspto.gov/applications/17460860)
 
 [
-David Stein, Ryann Vilim, John Wittrock **Methods, systems, and media for secure authentication of users using one or more biometric recognition systems**,
+David Stein, Ryan Vilim, John Wittrock **Methods, systems, and media for secure authentication of users using one or more biometric recognition systems**,
 U.S. Patent App.  16,930,836 (published Jan 21, 2021)
 ](https://patentcenter.uspto.gov/applications/16930836)
 
