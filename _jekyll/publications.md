@@ -11,13 +11,17 @@ permalink: /publications/
 
 # Publications
 
-## Law Review Article
+## Law Review Articles
 
-**Data Insecurity Law**,
 [
-<span style="font-variant: small-caps;">39 Santa Clara High Tech. L.J. __ </span>
-(forthcoming)
-](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4523433)
+**Hot Apps: Recalibrating IP to Address Online Software**,
+<span style="font-variant: small-caps;"> 2024 Wis. L. J. (forthcoming) </span>
+](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4546335)
+
+[
+**Data Insecurity Law**,
+<span style="font-variant: small-caps;">39 Santa Clara High Tech. L.J. 445 (2023) </span>
+](https://digitalcommons.law.scu.edu/chtlj/)
 
 ## Peer Reviewed Publications
 
@@ -42,10 +46,10 @@ permalink: /publications/
 
 ## Theses
 
-[David Stein, **Efficient Homomorphically Encrypted Privacy-Preserving Automated Biometric Recognition**, _MIT M. Eng. Thesis_ (Sept. 2020)](https://dspace.mit.edu/handle/1721.1/130608)
+[**Efficient Homomorphically Encrypted Privacy-Preserving Automated Biometric Recognition**, _MIT M. Eng. Thesis_ (Sept. 2020)](https://dspace.mit.edu/handle/1721.1/130608)
 
 [
-David Stein, **Constraint-Aware Coordinated Robotic Construction of Generic Structures**,  _MIT M. Eng. Thesis_ (not filed - see linked note) (June 2011)
+**Constraint-Aware Coordinated Robotic Construction of Generic Structures**,  _MIT M. Eng. Thesis_ (not filed - see linked note) (June 2011)
 ](/thesis2011.html)
 
 ## Book Chapters
@@ -56,36 +60,38 @@ David Stein, **Constraint-Aware Coordinated Robotic Construction of Generic Stru
 
 ## Patents
 [
-John Wittrock, David Stein, **Secure methods, systems, and media for generating and authenticating user credentials**,
+**Methods, Systems, And Media For Secure Authentication Of Users Based On A Biometric Identifier
+And Knowledge-Based Secondary Information**, David Stein, Ryan Vilim, John Wittrock, 
+U.S. Patent 11,711,215 (issued July 25, 2023)
+](https://patentcenter.uspto.gov/applications/16513295)
+
+
+[
+**Secure methods, systems, and media for generating and authenticating user credentials**, John Wittrock, David Stein,
 U.S. Patent 11,652,819 (issued May 16, 2023)
 ](https://patentcenter.uspto.gov/applications/16513295)
 
 [
-David Stein, John Wittrock, **Identity systems, methods, and media for auditing and notifying users concerning verifiable claims**,
-U.S. Patent 11,115,207 (issued Sept. 7, 2021)
-](https://patentcenter.uspto.gov/applications/16704544)
-
-[
-David Stein, John Wittrock, **Methods, systems, and media for recovering identity information in verifiable claims-based systems**,
-U.S. Patent App.  17,460,860 (published Dev. 16, 2021)
+**Methods, systems, and media for recovering identity information in verifiable claims-based systems**, David Stein, John Wittrock,
+U.S. Patent 11,108,760 (issued Aug. 31, 2021)
 ](https://patentcenter.uspto.gov/applications/17460860)
 
 [
-David Stein, Ryan Vilim, John Wittrock **Methods, systems, and media for secure authentication of users using one or more biometric recognition systems**,
-U.S. Patent App.  16,930,836 (published Jan 21, 2021)
-](https://patentcenter.uspto.gov/applications/16930836)
+**Identity systems, methods, and media for auditing and notifying users concerning verifiable claims**, David Stein, John Wittrock,
+U.S. Patent 11,115,207 (issued Sept. 21, 2021)
+](https://patentcenter.uspto.gov/applications/16704544)
 
 [
-David Stein, **Authorization review system**,
+**Authorization review system**, David Stein,
 U.S. Patent 9,497,253 (issued Nov.  15, 2016)
 ](https://patentcenter.uspto.gov/applications/14249117)
 
 [
-David Stein, **Presenting data in response to an incomplete query**,
+**Presenting data in response to an incomplete query**, David Stein,
 U.S. Patent 9,235,636 (issued Jan.  12, 2016)
 ](https://patentcenter.uspto.gov/applications/13722480)
 
 [
-David Stein, **Unified interface for querying data in legacy databases and current databases**,
+**Unified interface for querying data in legacy databases and current databases**, David Stein,
 U.S. Patent App.  13,737,322 (published July 10, 2014)
 ](https://patentcenter.uspto.gov/applications/13722480)
