@@ -3,6 +3,7 @@ layout: page
 title: about
 permalink: /about/
 ---
+
 <style>
   .visual-resume {
     --raw-img-width: 1170px;
@@ -47,7 +48,7 @@ I also worked on design pricipals for space-based synthetic aperature radar at t
 from 2009-2011 i did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures. In 2020, I returned briefly to write my Master's thesis, demonstrating a novel approach to homomorphically encrypted biometric recognition.
 -->
 
-![visual resume](/assets/images/2022-visual-resume.png){: .visual-resume}
+![visual resume](/assets/images/2024-visual-resume.png){: .visual-resume}
 {: .wide-img}
 
 [Publications](/publications)
@@ -82,6 +83,6 @@ from 2009-2011 i did research in distributed robotics at <a href="http://groups.
 </div>
 <!--div>
   <div style="text-align:center">
-    <a href="/static/resume_2018-02-10.pdf">Feb 2018 resume</a>
+    <a href="/static/resume_2024-07.pdf">CV (Updated Summer 2024)</a>
   </div>
 </div-->
