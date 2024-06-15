@@ -34,15 +34,15 @@ I currently live in NYC and work at NYU Law School. At NYU, I'm a research schol
 -->
 
 I worked in tech for about a decade.
-Among other roles,
-I was a tech lead at [Sidewalk Labs](https://www.sidewalklabs.com){:target="_blank"} where I worked on data security, privacy, and "smart" street grids.
-I was director of product engineering at [Braze](https://www.braze.com/product/){:target="_blank"}.
-I was an early member of the engineering team at [Dropbox](https://dropbox.com){:target="_blank"}; I focused mostly on making large-scale data analytics accessible to non-engineers, including setting up the teams and infrastructure for managing security incident response, prototyping, internal tools, and sales and support automation.
+Among other roles:
+I was a tech lead at [Sidewalk Labs](https://www.sidewalklabs.com){:target="_blank"}, where I worked on data security, privacy, and "smart" street grids;
+director of product engineering at [Braze](https://www.braze.com/product/){:target="_blank"};
+and an early member of the engineering team at [Dropbox](https://dropbox.com){:target="_blank"}, where I focused mostly on making large-scale data analytics accessible to non-engineers, including setting up the teams and infrastructure for managing security incident response, prototyping, internal tools, and sales and support automation.
 
-My academic background is a patchwork of legal and engineering work.
-At NYU Law School, I was a research scholar at the [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team){:target="_blank"}, a fellow at the [Information Law Institute](https://www.law.nyu.edu/centers/ili/people){:target="_blank"}, and i co-taught a seminar on [global tech law](https://its.law.nyu.edu/courses/description.cfm?id=32595){:target="_blank"}.
-At MIT, I did my graduate research at the [Computer Science and AI Lab](https://www.csail.mit.edu/research/distributed-robotics-laboratory){:target="_blank"}, first on distributed robtics and later on homomorphically encrypted biometric recognition.
-I also worked on design pricipals for space-based synthetic aperature radar at the [Systems Engineering Research Institute](https://seari.mit.edu/){:target="_blank"}.
+My academic training is a patchwork of legal and engineering work.
+At NYU Law School, I was a research scholar at the [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team){:target="_blank"}, a fellow at the [Information Law Institute](https://www.law.nyu.edu/centers/ili/people){:target="_blank"}, and co-taught a seminar on [global tech law](https://its.law.nyu.edu/courses/description.cfm?id=32595){:target="_blank"} as an adjunct professor.
+At MIT, I did graduate research at the [Computer Science and AI Lab](https://www.csail.mit.edu/research/distributed-robotics-laboratory){:target="_blank"}, first on distributed robtics and later on homomorphically encrypted biometric recognition.
+I also worked on design priciples for space-based synthetic aperature radar at the [Systems Engineering Research Institute](https://seari.mit.edu/){:target="_blank"}.
 
 <!---
 from 2009-2011 i did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures. In 2020, I returned briefly to write my Master's thesis, demonstrating a novel approach to homomorphically encrypted biometric recognition.
