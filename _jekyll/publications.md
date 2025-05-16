@@ -32,23 +32,23 @@ permalink: /publications/
 ## Peer Reviewed Publications
 
 [
-**Building a Long Text Privacy Policy Corpus with Multi-Class Labels**, F. Marotta-Wurgler\*, D. Stein\*, _63rd Annual Meeting of the Association for Computational Linguistics_ (forthcoming 2025)
+**Building a Long Text Privacy Policy Corpus with Multi-Class Labels**, F. Marotta-Wurgler\*, D. Stein\*, _63rd Annual Meeting of the Association for Computational Linguistics_ [ACL] (forthcoming 2025)
 ](#)
 
 [
-**Multi-Attribute Tradespace Exploration for Survivability**, A. Ross\*, D. Stein\*, D. Hastings, _Journal of Spacecraft and Rockets vol. 51 no. 5_ (2014)
+**Multi-Attribute Tradespace Exploration for Survivability**, A. Ross\*, D. Stein\*, D. Hastings, _Journal of Spacecraft and Rockets vol. 51 no. 5_ [JSR] (2014)
 ](https://dspace.mit.edu/handle/1721.1/82512)
 
 [
-**Constraint-aware Coordinated Construction of Generic Structures**, D. Stein (presenter), T. Schoen, D. Rus, _International Conference on Intelligent Robots_ (2011)
+**Constraint-aware Coordinated Construction of Generic Structures**, D. Stein (presenter), T. Schoen, D. Rus, _International Conference on Intelligent Robots_ [IROS] (2011)
 ](https://dspace.mit.edu/handle/1721.1/72506)
 
 [
-**Experiments in Decentralized Robot Construction with Tool Delivery and Assembly Robots**, A. Bolger\*, M. Faulkner\*, D. Stein\* (presenter), L. White\*, S. Yun\*, D. Rus, _International Conference on Intelligent Robots_ (2010)
+**Experiments in Decentralized Robot Construction with Tool Delivery and Assembly Robots**, A. Bolger\*, M. Faulkner\*, D. Stein\* (presenter), L. White\*, S. Yun\*, D. Rus, _International Conference on Intelligent Robots_ [IROS] (2010)
 ](https://dspace.mit.edu/handle/1721.1/72544)
 
 [
-**Multi-Attribute Tradespace Exploration for Survivability: Application to Satellite Radar**, M. Richards\*, A. Ross\*, D. Stein\*, D. Hastings, _American Institute of Aeronautics and Astronautics SPACE Forum_ (2009)
+**Multi-Attribute Tradespace Exploration for Survivability: Application to Satellite Radar**, M. Richards\*, A. Ross\*, D. Stein\*, D. Hastings, _American Institute of Aeronautics and Astronautics SPACE Forum_ [AIAA SPACE Forum] (2009)
 ](https://dspace.mit.edu/handle/1721.1/72060)
 
 \* shared first authorship, listed alphabetically
