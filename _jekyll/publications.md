@@ -14,8 +14,14 @@ permalink: /publications/
 ## Law Review Articles
 
 [
+**Generative Misinterpretation**,
+<span style="font-variant: small-caps;">63 Harv. J. Legis. _</span> (forthcoming 2026)
+(w/ James Grimmelmann & Benjamin L. W. Sobel)
+](#)
+
+[
 **Hot Apps: Recalibrating IP to Address Online Software**,
-<span style="font-variant: small-caps;"> 2024 Wis. L. J. (forthcoming) </span>
+<span style="font-variant: small-caps;"> 2024 Wis. L. J. 2014 </span>
 ](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4546335)
 
 [
@@ -24,6 +30,10 @@ permalink: /publications/
 ](https://digitalcommons.law.scu.edu/chtlj/)
 
 ## Peer Reviewed Publications
+
+[
+**Building a Long Text Privacy Policy Corpus with Multi-Class Labels**, F. Marotta-Wurgler\*, D. Stein\*, _63rd Annual Meeting of the Association for Computational Linguistics_ (forthcoming 2025)
+](#)
 
 [
 **Multi-Attribute Tradespace Exploration for Survivability**, A. Ross\*, D. Stein\*, D. Hastings, _Journal of Spacecraft and Rockets vol. 51 no. 5_ (2014)
