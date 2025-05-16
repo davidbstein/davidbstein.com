@@ -27,7 +27,7 @@ permalink: /about/
   }
 </style>
  
-I live and work in Boston, where I'm an assistant professor at Northeastern University within the law and computer science departments. I study how law and technology influence each other.
+I'm an academic studying the relationship between legal institutions and technical infrastructre. I am currently winding down my role as an assistant professor of law and computer science at Northeastern University. This fall, I start as an assistant professor of law at Vanderbilt. 
 
 <!---
 I currently live in NYC and work at NYU Law School. At NYU, I'm a research scholar at the [Guarini Institute for Global Law and Tech](https://www.guariniglobal.org/current-team), a fellow at the [Information Law Institute](https://www.law.nyu.edu/centers/ili/people), and I co-teach a seminar on [global tech law](https://its.law.nyu.edu/courses/description.cfm?id=32595) as an adjunct. Outside of the law school, I do some contract work helping with large-scale data collection and analytics, and a little bit of angel investing.
