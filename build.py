@@ -27,6 +27,8 @@ LAYOUTS = ROOT / "_layouts"
 BUILD_TARGET = Path("docs")
 SASS_DIR = ROOT / '_sass'
 
+import shutil
+shutil.rmtree(BUILD_TARGET)
 
 def date_to_xmlschema(value):
   if isinstance(value, str):
