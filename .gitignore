@@ -3,3 +3,7 @@
 *~
 *.ipynb*
 *.venv*
+*.sass-cache*
+*_site
+*.sass-cache
+*.jekyll-metadata

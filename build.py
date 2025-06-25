@@ -161,7 +161,6 @@ def build_static_content():
       dst = BUILD_TARGET / subpath
       if ext == "md":
         metadata, html = gen_html_from_md_file(ROOT, subpath)
-        print(subpath, metadata)
         link = metadata.get('permalink')
         if link and not link.startswith("_"):
           if link.startswith('/'):
@@ -194,6 +193,7 @@ def build_static_content():
           f.write(render_html(metadata, content))
       else:
         os.makedirs(dst.parent, exist_ok=True)
+        print(dst)
         shutil.copyfile(path, dst)
     except:
       import traceback
