@@ -7,7 +7,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Jun 2025 20:57:22 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 21:04:40 +0000</lastBuildDate>
     <item>
       <title>How to build rich, styled input on the web</title>
       <link>https://davidbstein.com/blog/2015/12/22/rich_input.html</link>
