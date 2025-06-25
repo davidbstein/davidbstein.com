@@ -1,0 +1,190 @@
+
+body {
+    /* padding: 0; */
+    margin: 0;
+    font-size: 16px;
+    font-family: Verdana, "Open Sans", sans-serif;
+    line-height: 24px;
+}
+
+main {
+
+  line-height: 28px;
+  max-width: 780px;
+  margin: 32px auto;
+  position: relative;
+  padding: 0 32px;
+  min-height: calc(100vh - 168px);
+
+  .post-meta {
+    color: #aaa;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  strong {
+      font-weight: 600;
+  }
+  p {
+      margin: 24px 0;
+      line-height: 32px;
+      font-size: 18px;
+      font-family: "medium-content-serif-font",Georgia,Cambria,"Times New Roman",Times,serif;
+  }
+  li p {
+      margin: 8px 0;
+  }
+  blockquote {
+
+  }
+  image {
+      margin: 16px auto;
+      display: block;
+  }
+  li {
+
+  }
+  list {
+
+  }
+  ol.list {
+      list-style-type: decimal;
+      margin-left: 16px;
+  }
+  ul {
+      list-style-type: circle;
+  }
+  li {
+      margin-left: 24px;
+  }
+  header {
+      font-weight: 400;
+  }
+  h1 {
+      font-size: 32px;
+
+      line-height: 54px;
+      margin-bottom: 32px;
+  }
+  h2 {
+      font-size: 28px;
+      line-height: 56px;
+      margin-bottom: 16px;
+      margin-top: 64px;
+  }
+  h3 {
+      font-size: 24px;
+
+      font-weight: 600;
+      line-height: 62px;
+  }
+  h4 {
+      font-size: 20px;
+      font-weight: bolder;
+
+      line-height: 64px;
+  }
+  h5 {
+      font-weight: bold;
+
+      line-height: 64px;
+  }
+  .codeblock-wrapper {
+      background: rgba(10,10,10,.1);
+      margin: 8px;
+      padding: 8px;
+  }
+  .codeblock {
+      font-size: 16px;
+  }
+  code {
+      background: rgba(10, 10, 10, 0.05);
+      color: #09A54D;
+  }
+  code, .codeblock {
+      font-family: monospace;
+      white-space: pre;
+      overflow-x: scroll;
+  }
+
+  .html {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      margin-left: 0;
+      margin-right: 0;
+  }
+  .horizontalrule {
+
+  }
+
+  blockquote p {
+      line-height: 32px;
+      font-weight: 100;
+      font-style: italic;
+  }
+
+  em {
+      font-style: italic;
+  }
+
+
+
+  /* Tomorrow Night Theme */
+  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+  .tomorrow-comment, .hljs-comment, .hljs-title {
+    color: #969896;
+  }
+
+  .tomorrow-red, .hljs-variable, .hljs-attribute, .hljs-tag, .hljs-regexp, .hljs-ruby .constant, .hljs-xml .tag .title, .hljs-xml .pi, .hljs-xml .doctype, .hljs-html .doctype, .hljs-css .id, .hljs-css .class, .hljs-css .pseudo {
+    color: #cc6666;
+  }
+
+  .tomorrow-orange, .hljs-number, .hljs-preprocessor, .hljs-built_in, .hljs-literal, .hljs-params, .hljs-constant {
+    color: #de935f;
+  }
+
+  .tomorrow-yellow, .hljs-class, .hljs-ruby .class .title, .hljs-css .rules .attribute {
+    color: #f0c674;
+  }
+
+  .tomorrow-green, .hljs-string, .hljs-value, .hljs-inheritance, .hljs-header, .hljs-ruby .symbol, .hljs-xml .cdata {
+    color: #b5bd68;
+  }
+
+  .tomorrow-aqua, .hljs-css .hexcolor {
+    color: #8abeb7;
+  }
+
+  .tomorrow-blue, .hljs-function, .hljs-python .decorator, .hljs-python .title, .hljs-ruby .function .title, .hljs-ruby .title .keyword, .hljs-perl .sub, .hljs-javascript .title, .hljs-coffeescript .title {
+    color: #81a2be;
+  }
+
+  .tomorrow-purple, .hljs-keyword, .hljs-javascript .function {
+    color: #b294bb;
+  }
+
+  pre code {
+    display: block;
+    background: #1d1f21;
+    color: #c5c8c6;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    line-height: 1.5;
+    border: 1px solid #666;
+    padding: 16px;
+  }
+  .text-document code {
+      background: rgba(10, 10, 10, 0.05);
+      color: #09A54D;
+  }
+}
+
+footer {
+  text-align: center;
+  color: #ccc;
+}

@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <style>
+       /* some styling so we know where the div is */
+       body {
+          background: #1d1f21;
+          color: white;
+          padding: 4px 8px;
+          filter: invert(100%);
+       }
+       #container {
+          border: 1px solid white;
+          padding: 4px;
+       }
+       #my-editable-div {
+          min-height: 1em;
+       }
+       #my-console-div {
+        font-family: monospace;
+        white-space: pre-wrap;
+        margin-top: 16px;
+        height: 80px;
+        height: calc(100vh - 32px - 16px - 1em - 4px);
+        overflow-y: scroll;
+       }
+    </style>
+    <script>
+      window.onload = function(){
+        var editable_div = document.getElementById("my-editable-div");
+
+        var START_RANGE_MARKER = "\u0091"
+        var END_RANGE_MARKER = "\u0092"
+        var AT_MENTION_REGEX = /((?!\w)@[\w\u0091\u0092]+)/g
+
+        function format_content(){
+          var raw_content;
+          mark_cursor();
+          raw_content = editable_div.textContent;
+          editable_div.innerHTML = raw_content.replace(
+            AT_MENTION_REGEX,
+            "<span style='color:cyan'>$1</span>"
+          );
+          restore_cursor();
+        }
+
+        function mark_cursor(){
+          var range = get_range();
+          // The order matters here!
+          // insertNode places the node DIRECTLY in front of the start of
+          // the range (meaning if two ranges have a boundary at the same
+          // point, the boundary will come after the inserted node). If we
+          // place the start marker first, we run the risk of putting it in
+          // after of the end marker.
+          _insert_char(END_RANGE_MARKER,
+            range.endContainer, range.endOffset);
+          _insert_char(START_RANGE_MARKER,
+            range.startContainer, range.startOffset);
+        }
+
+        function _insert_char(char, container, offset){
+          var cursor = document.createRange();
+          cursor.setStart(container, offset);
+          cursor.collapse(true); // optional - forces end boundary to match start boundary
+          node = document.createTextNode(char);
+          cursor.insertNode(node);
+        }
+
+        function restore_cursor(){
+          var container_offset_temp, range;
+          var start_node, start_offset, end_node, end_offset;
+          range = document.createRange()
+
+          container_offset_temp = _find_and_remove_marker(START_RANGE_MARKER, editable_div);
+          start_node = container_offset_temp[0];
+          start_offset = container_offset_temp[1];
+
+          container_offset_temp = _find_and_remove_marker(END_RANGE_MARKER, editable_div);
+          end_node = container_offset_temp[0];
+          end_offset = container_offset_temp[1];
+
+          range.setStart(start_node, start_offset);
+          range.setEnd(end_node, end_offset);
+
+          sel = document.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+
+        function _find_and_remove_marker(marker, root_node){
+          var node, i, offset, result, children;
+          if (root_node.nodeValue != null){
+            offset = root_node.nodeValue.indexOf(marker);
+            if (offset >= 0) {
+              root_node.nodeValue =
+                root_node.nodeValue.substr(0, offset) +
+                root_node.nodeValue.substr(offset+1);
+              return [root_node, offset];
+            }
+          } else {
+            children = root_node.childNodes;
+            for (var i in children){
+              node = children[i];
+              result = _find_and_remove_marker(marker, node);
+              if (result != null)
+                return result
+            }
+          }
+          return null
+        }
+
+        function get_range(){
+          var sel = document.getSelection();
+          if (sel.rangeCount === 0) {
+            return;
+          }
+          return sel.getRangeAt(0);
+        }
+
+        function insert_text_at_cursor(text){
+          var range = get_range();
+          if (!range) return;
+          range.deleteContents();
+          var text_node = document.createTextNode(text);
+          range.insertNode(text_node);
+          range.setStart(range.endContainer, range.endOffset);
+          document.getSelection().removeAllRanges()
+          document.getSelection().addRange(range)
+        }
+
+        function paste_event_handler(e){
+          var raw_text, raw_data, paste_data;
+          e.preventDefault();
+          raw_data = e.dataTransfer;
+          paste_data = e.clipboardData;
+          raw_data = raw_data || paste_data;
+          raw_text = raw_data.getData("Text");
+          insert_text_at_cursor(raw_text);
+          format_content();
+        }
+        // set up listeners for `drop` and `paste` events
+        editable_div.addEventListener("drop", paste_event_handler);
+        editable_div.addEventListener("paste", paste_event_handler);
+        editable_div.addEventListener("keyup", format_content);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="my-editable-div" contenteditable="true">
+        Hello @friend ! @ - mentions are highlighted.
+      </div>
+    </div>
+  </body>
+</html>

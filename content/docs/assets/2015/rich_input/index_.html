@@ -1,0 +1,495 @@
+<!--
+Copyright (C) 2015 David Stein
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+-->
+
+<html>
+<head>
+<title>stein - Rich text editing on the web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="stein - Rich text editing on the web" property="og:title" />
+<meta content="stein - Rich text editing on the web" property="twitter:title" />
+<meta content="A brief intro to rich text editing on the web" name="twitter:description" />
+<meta content="A brief intro to rich text editing on the web" name="og:description" />
+<meta content="/static/img/favicon.ico" name="twitter:image" />
+<meta content="/static/img/favicon.ico" name="og:image" />
+
+<link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+<link rel="stylesheet" type="text/css" href="/static/css/text.css">
+<link rel="stylesheet" type="text/css" href="/static/css/text.css">
+
+<!-- generated HTML from commonmark-react.js -->
+
+
+</head>
+<body id="render-target">
+<div class="wrapper" >
+  <header class="" >
+    <div id="header-background" >
+    </div><div id="header-content" >
+    <div class="title" ><a href="/" >stein</a></div>
+    <ul >
+    <li ><a href="/blog" >blog</a></li>
+    <li ><a href="/about" >about</a></li>
+    </ul></div>
+    </header>
+  <div id="content-wrapper">
+  <div id="content-wrapper-bg"></div><div id="content-wrapper-fg">
+  <div style="white-space: pre-wrap; font-family: monospace; color: #444;">
+  <div style="color:white;"> loading...  </div>
+  (this page uses javascript, but falls back to markdown)
+
+# Making rich text input for the web.
+
+__tl;dr:__ Here's an [example](example7.html). Here's the [source](/static/source_viewer_dyn.html#/blog/2015-12-22_rich_input/example7.html).
+
+I recently set out to build a rich input box, assuming some googling and stack overflow articles would be enough to get started. I found a lot of content on how bad the tools the browser gives you are. I found less help on how to get started building something. This is an attempt to document my initial learnings from building simple rich text editing on the web.
+
+There are two big parts of building a rich editing experience. The first is detecting the content a user inputs, the second is displaying that content. I knew enough CSS and HTML to get content on a page; this post focuses mostly on capturing input cleanly.
+
+A kind-of-standard for managing user input is the `contenteditable` attribute, which as far as I can tell is an artifact of an Internet Explorer 5.5 feature for editing emails in Outlook Online. The feature was [sort-of-cloned](https://bugzilla.mozilla.org/show_bug.cgi?id=97284) by other browsers. It's [bug ridden](https://codemirror.net/doc/internals.html) at best and [broken by design](https://medium.com/medium-eng/why-contenteditable-is-terrible-122d8a40e480) at worst. It's also very powerful if you can avoid the messy parts.
+
+There many great [open](https://github.com/ajaxorg/ace) [source](https://codemirror.net/) [projects](https://github.com/dropbox/hackpad) that have a robust approach to fully-featured rich text editing. I was more interested in building some basic functionality (autocomplete and at-mentioning) without loading an entire text editor before page load.
+
+---
+
+## Getting to know `contenteditable`
+
+It's worth playing with `contenteditable` a little.
+
+I've iframe'd in an div with the contenteditable flag set, I'd recommend using the link beneath it to try it in a new tab. Here are some things to try:
+
+ - type into the box.
+ - copy and paste part of a website. Images, formatting, potentially some javascript (`onclick=`, for example)
+ - copy something with complex CSS (ie, explicit positioning). Stuff can escape the box.
+
+```
+&lt;html&gt
+  &lt;body&gt
+    &lt;div contenteditable="true"&gt
+      editable content!
+    &lt;/div&gt
+  &lt;/body&gt
+&lt;/html&gt
+```
+
+&lt;iframe src="example1.html" sandbox&gt
+   this must be multiple lines
+&lt;/iframe&gt
+&lt;div style="float:right"&gt
+&lt;a href="example1.html" target="_blank"&gtexample1.html&lt;/a&gt
+( &lt;a href="/static/source_viewer_dyn.html#/blog/2015-12-22_rich_input/example1.html" target="_blank"&gtfull source&lt;/a&gt )
+&lt;/div&gt
+&lt;div style="clear:both"&gt&lt;/div&gt
+
+
+## Setting up a text input
+
+My first goal is to build something that behaves like a `textarea`. Pretty much any box that allows only text input and has a cursor location will work. I'm going to use a `div` with the `contenteditable` flag set to manage the cursor, and then restrict behavior to only allow plain text.
+
+### Restricting input to plain text
+
+Starting with the box in the first example, I now want to restrict the contents of the box to _only be text_. On some webkit browsers the attr `contenteditable="plaintext-only"` does this; not all browsers are webkit.
+
+My approach is to capture any insertion that _isn't a single character resulting from a keystroke_ and define some custom behavior. This means I need to detect __drag/drop__ and __paste__ events. According to the docs these insertions always trigger [a drop event](http://www.w3.org/TR/2008/WD-html5-20080610/editing.html#paste). In practice, I need to listen for `paste` events as well.
+
+
+```
+function paste_event_handler(e){
+  var raw_text, raw_data, paste_data;
+
+  // prevent the paste from happening
+  e.preventDefault();
+
+  // try to get the data from a DragEvent
+  raw_data = e.dataTransfer;
+
+  // fall back to data from a ClipboardEvent
+  paste_data = e.clipboardData;
+  raw_data = raw_data || paste_data;
+
+  // extract the raw text from the pasted data
+  raw_text = raw_data.getData("Text");
+  console.log(raw_text);
+};
+
+// set up listeners for `drop` and `paste` events
+var editable_div = document.getElementById("my-editable-div");
+editable_div.addEventListener("drop", paste_event_handler);
+editable_div.addEventListener("paste", paste_event_handler);
+```
+
+&lt;iframe src="example2.html" sandbox="allow-scripts"&gt
+&lt;/iframe&gt
+&lt;div style="float:right"&gt
+&lt;a href="example2.html" target="_blank"&gtexample2.html&lt;/a&gt
+( &lt;a href="/static/source_viewer_dyn.html#/blog/2015-12-22_rich_input/example2.html" target="_blank"&gtfull source&lt;/a&gt )
+&lt;/div&gt
+&lt;div style="clear:both"&gt&lt;/div&gt
+
+&gt Here's an experiment that suppresses any input that isn't normal typing, instead logging the content to the console. No need to open a dev console, output is captured and displayed on the page. On most browsers, drag-drop from outside an iFrame is suppressed.
+
+### Finding the cursor
+
+According to the [w3c working draft](http://www.w3.org/TR/2008/WD-html5-20080610/editing.html), when an editable element has focus it has a cursor or selection. You can check on the cursor or selection's position programmatically.
+
+Before inserting content at the cursor, I needed to understand the structure of selection ranges and how to manipulate them. I'll review the basics, but you can [skip ahead](#section-2.3).
+
+#### Nodes, Selections, and Ranges
+
+The content of a div is composed of a set of [Nodes](http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/Node.html) (as is the rest of the DOM). For my purposes there are two types of nodes:
+
+ - __text nodes__ - blocks of text. don't have any additional markup
+ - __elements__ - the DOM nodes we manipulate all the time (divs, spans, etc)
+
+If there is focus on the page, it is represented as a `Range`. A range has a start location and an end location, called [boundary points](http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position)). A boundary point is defined by a node and an offset.
+
+In a text node a _boundary point_ is effectively an index into a string: the boundary point is immediately after the &lt;`offset`&gtth character in the string (or before the first char if offset = 0).
+
+In an elements, the boundary point lies between nodes immediately after the &lt;`offset`&gtth child node.
+
+I found this easier to understand after playing with it, I've written a tool for playing with boundary points. Different browsers will behave slightly differently along the boundaries between nodes, but the way in which indexing works should stay the same.
+
+In this demo, there is a graphical representation of the nodes, with red and green dots at the boundary points when the box has focus.
+
+```
+&lt;!-- raw html from example --&gt
+  try
+  &lt;span style="color: red"&gt
+    &lt;b&gt highlight&lt;/b&gt
+    ing or clicking parts of
+  &lt;/span&gt
+  this sentence
+```
+
+&lt;iframe src="example3.html" style="height:320px" sandbox="allow-scripts"&gt
+&lt;/iframe&gt
+&lt;a href="example3.html" target="_blank" style="float:right"&gtexample3.html&lt;/a&gt
+&lt;div style="clear:both"&gt&lt;/div&gt
+
+Notice that "this" and "sentence" are different nodes even though they are the same chunk of HTML. Try typing, and using ctrl+i and ctrl+b to bold and italify text. Depending on your browser, you may be able to position boundary points _between_ the text nodes or element boundaries. Each browser is a little different in their implementation of this behavior.
+
+&gt The `normalize` function tries to join text_nodes when they appear next to each other. You can call it on a parent node that contains multiple child nodes.
+
+#### List of useful commands for manipulating selection ranges
+
+I need to manipulate selection ranges as I mutate the div to make the text "rich". The selection and range APIs can do a lot of things - these are the fields and functions I use over the rest of this post to work with selections.
+
+- `document.getSelection()`
+
+  Returns a `Selection`, which represents the current selection in the document; contains zero or more `Range`'s
+
+- `Selection.rangeCount`
+
+  the number of `Range`'s in the selection. This is either 0 or 1 in almost every practical situation.
+
+  _There are some rare cases when `rangeCount &gt 1`. The most common is when the user selects some text with one input device (ie, a mouse) and then moves focus with another device (ie, hitting tab on a keyboard) - resulting in two selection ranges. For this post, I'll assume that there is at most one range. In practice you will have to handle higher `rangeCount`s by checking which elements have focus._
+
+- `Range.startContainer`, `Range.startOffset`, `Range.endContainer`, `Range.endOffset`
+
+  The (node, offset) pairs defining a range.
+
+- `Range.deleteContents()`
+
+  Delete the content between the boundaries, removing any nodes that are contained completely between those two points.
+
+- `Range.insertNode(node)`
+
+  Inserts a node immediately after the start boundary, splitting any text nodes into multiple nodes and pushing any other boundary points to the end of the inserted node.
+
+  _before insert_ - `&lt;start1&gt&lt;start2&gt&lt;end1&gt` __content__ `&lt;end2&gt`
+
+  _after insert_ - `&lt;start1&gt` &lt;INSERTED_NODE&gt `&lt;start2&gt&lt;end1&gt` __content__ `&lt;end2&gt`
+
+- `Range.setStart(node, offset)`, `Range.setEnd(node, offset)`
+
+  Adjust the boundaries.
+
+- `Node.normalize()`
+
+  Combine adjacent child text nodes into a single node.
+
+### Handling pasted content
+
+Using this API, I add functionality for pasting and dropping content back into the input box. I _only insert the text_, ignoring styling and formatting.
+
+```
+function get_range(){
+  var sel = document.getSelection();
+  // rangeCount is 0 if nothing is selected (ie, we do
+  // not have user focus)
+  if (sel.rangeCount === 0) {
+    return;
+  }
+  // if the browser allows multiple simultaneous selections,
+  // much of this example needs to be fancier. Luckily most
+  // browsers don't allow that while editing text.
+  return sel.getRangeAt(0);
+}
+
+function insert_text_at_cursor(text){
+  // get user selection, if there is any
+  var range = get_range();
+  if (!range) return;
+
+  // delete the selection if needed
+  range.deleteContents();
+
+  // insert text
+  var text_node = document.createTextNode(text);
+  range.insertNode(text_node);
+
+  // the "start" of our range is now before the inserted text,
+  // we need to move it to the end...
+  range.setStart(range.endContainer, range.endOffset);
+
+  // ...and then force user focus to that range
+  document.getSelection().removeAllRanges()
+  document.getSelection().addRange(range)
+}
+
+```
+
+&lt;iframe src="example4.html" style="height:54px" sandbox="allow-scripts"&gt
+&lt;/iframe&gt
+&lt;div style="float:right"&gt
+&lt;a href="example4.html" target="_blank"&gtexample4.html&lt;/a&gt
+( &lt;a href="/static/source_viewer_dyn.html#/blog/2015-12-22_rich_input/example4.html" target="_blank"&gtfull source&lt;/a&gt )
+&lt;/div&gt
+&lt;div style="clear:both"&gt&lt;/div&gt
+
+Some things are not suppressed here: a user can still add emphasis to text on most user agents (ctrl+b on desktop, for example). Rather than catching those cases, I am going to add some heavy-handed formatting logic that overwrites any of the formatting behavior provided by the user agent.
+
+&lt;a name="cursor"&gt&lt;/a&gt
+
+## Putting it together: building a rich text input area
+
+Now that I have a "`textarea`"  that mostly works, I'm ready to add some intelligence. For my demo I'd like to __turn @-mentions blue__.
+
+As a starting point, I just reformat the text after each keystroke. This doesn't preserve cursor position. The textarea is almost unusable with the cursor jumping all over the place.
+
+#### Simple replacement code
+
+```
+var AT_MENTION_REGEX = /((?!\w)@[\w]+)/g;
+
+/*
+* Highlight @-mentions in the most naïve way
+* possible - rebuild the entire div, clear
+* and replace. Highly recommend you do something
+* more efficient in practice :-)
+*/
+function format_content(){
+  // editable_div is the editable DOM element
+  // (see example 2 and onwards)
+  var raw_content = editable_div.textContent;
+  editable_div.innerHTML = raw_content.replace(
+    AT_MENTION_REGEX,
+    "&lt;span style='color:cyan'&gt$1&lt;/span&gt"
+  );
+}
+
+editable_div.addEventListener("keyup", format_content);
+```
+
+&lt;iframe src="example5.html" style="height:54px" sandbox="allow-scripts"&gt
+&lt;/iframe&gt
+&lt;div style="float:right"&gt
+&lt;a href="example5.html" target="_blank"&gtexample5.html&lt;/a&gt
+( &lt;a href="/static/source_viewer_dyn.html#/blog/2015-12-22_rich_input/example5.html" target="_blank"&gtfull source&lt;/a&gt )
+&lt;/div&gt
+&lt;div style="clear:both"&gt&lt;/div&gt
+
+### Preserving cursor position
+
+One way to avoid moving focus when mutating an editable region is to mark the cursor position. As three as the text is preserved, the markers should be as well. I do this in three steps
+
+ 1. mark the beginning and end of the selection ranges using unique characters
+ 1. mutate the contents
+ 1. restore the selection and remove the markers
+
+This breaks if the delimiter characters appear elsewhere in the content being edited. I work around this problem using [private use unicode characters](https://en.wikipedia.org/wiki/Private_Use_Areas). I enforce that two reserved characters are never used in the textarea, that way I can use them as markers.
+
+##### Add calls to mark and restore the cursor
+
+I start by adding `mark_cursor` and `restore_cursor` functions to the code from above.
+
+```
+// set the markers
+var START_RANGE_MARKER = "\u0091"
+var END_RANGE_MARKER = "\u0092"
+
+// messy regex hack to stop the cursor from interfering
+// with matching mentions - in practice we should remove
+// the cursor markers before doing tokenization logic.
+var AT_MENTION_REGEX = /((?!\w)@[\w\u0091\u0092]+)/g
+
+/*
+* Highlight @-mentions in the most naïve way possible - rebuild
+* the entire div, clear and replace. Highly recommend you
+* do something more efficient :-)
+*/
+function format_content(){
+  var raw_content;
+  mark_cursor(); // implemented below
+  raw_content = editable_div.textContent;
+  editable_div.innerHTML = raw_content.replace(
+    AT_MENTION_REGEX,
+    "&lt;span style='color:cyan'&gt$1&lt;/span&gt"
+  );
+  restore_cursor(); // implemented below
+}
+```
+
+##### Cursor marking function
+
+I get the Selection and Range, and mark them with my reserved characters. Since the function above doesn't remove characters, these will remain even after we format the text.
+
+For this example I use a helper function to insert the markers, in practice I use the same helper function to handle pasted text.
+
+```
+/*
+* marks the current location of the cursor or selection
+*/
+function mark_cursor(){
+  var range = get_range();
+  // The order matters here!
+  // See the notes on how Node.insertCursor() works
+  // above.
+  _insert_char(END_RANGE_MARKER,
+    range.endContainer, range.endOffset);
+  _insert_char(START_RANGE_MARKER,
+    range.startContainer, range.startOffset);
+}
+
+/*
+* inserts a char into a text node (@container) at a given offset
+*/
+function _insert_char(char, container, offset){
+  var cursor, node;
+  cursor = document.createRange();
+  cursor.setStart(container, offset);
+  node = document.createTextNode(char);
+  cursor.insertNode(node);
+}
+```
+
+##### Cursor restoring function
+
+I use a helper method to find the position of a given character before removing it, and use this to restore the selection.
+
+```
+/*
+* restore the cursor or selection placed by `mark_cursor`
+*/
+function restore_cursor(){
+  var temp, range, start_node,
+      start_offset, end_node, end_offset;
+
+  range = document.createRange()
+
+  temp = _find_and_remove_marker(START_RANGE_MARKER, editable_div);
+  start_node = temp[0];
+  start_offset = temp[1];
+
+  temp = _find_and_remove_marker(END_RANGE_MARKER, editable_div);
+  end_node = temp[0];
+  end_offset = temp[1];
+
+  range.setStart(start_node, start_offset);
+  range.setEnd(end_node, end_offset);
+
+  sel = document.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+/*
+* Note: TreeWalker provides a more succinct and efficient way to
+* search the node tree. In an attempt to minimize the number of
+* APIs used, I'm doing some simple recursion to walk to tree
+*/
+/*
+* this method finds the first instance of @marker in @root_node,
+* removes it, and returns the container node and offset of the
+* location being marked as a tuple
+*/
+function _find_and_remove_marker(marker, root_node){
+  var node, i, offset, result, children;
+  if (root_node.nodeValue != null){
+    offset = root_node.nodeValue.indexOf(marker);
+    if (offset &gt= 0) {
+      root_node.nodeValue =
+        root_node.nodeValue.substr(0, offset) +
+        root_node.nodeValue.substr(offset+1);
+      return [root_node, offset];
+    }
+  } else {
+    children = root_node.childNodes;
+    for (var i in children){
+      node = children[i];
+      result = _find_and_remove_marker(marker, node);
+      if (result != null)
+        return result
+    }
+  }
+  return null
+}
+```
+
+##### Finished "textarea" with highlighted at-mentions
+
+&lt;iframe src="example6.html" style="height:54px" sandbox="allow-scripts"&gt
+&lt;/iframe&gt
+&lt;div style="float:right"&gt
+&lt;a href="example6.html" target="_blank"&gtexample6.html&lt;/a&gt
+( &lt;a href="/static/source_viewer_dyn.html#/blog/2015-12-22_rich_input/example6.html" target="_blank"&gtfull source&lt;/a&gt )
+&lt;/div&gt
+&lt;div style="clear:both"&gt&lt;/div&gt
+
+#### Caveats and Gotchas
+
+- instead of [`contenteditable="true"`](https://w3c.github.io/editing/contentEditableTrue.html), [`contenteditable=typing`](http://w3c.github.io/editing/contentEditable.html#caret-state) may be the right choice, but I haven't played with it enough.
+
+- undo is broken in these examples. There is a thing called [UndoManager](http://www.w3.org/TR/2008/WD-html5-20080610/editing.html#undomanager) that can help. It would need its own post. I'm ignoring it for this example.
+
+- Things like what happens when you hit enter (newline? `&lt;br&gt`? `&lt;p&gt`?) are TOTALLY DIFFERENT in different browsers. I don't handle line breaks correctly in these examples.
+
+- Every user agent has it's own pile of legacy methods. The fiddle-till-it-works approach ends badly.
+
+- `[selection].anchorNode` is a thing. `[selection].baseNode` is only a thing in some user agents.
+
+## next post: adding emoji / auto-complete
+
+part 2 coming roughly "when I get around to writing it"
+
+
+&lt;div id="disqus_thread"&gt&lt;/div&gt
+
+
+  </div></div></div>
+  <div id="footer-wrapper">Copyright (c) David Stein</div>
+</div>
+</body>
+</html>
