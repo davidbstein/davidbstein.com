@@ -1,16 +1,16 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+<article class="post">
   <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 
-<ul class="post-list">
+  <ul class="post-list">
 
-    {{ content }}
+      {{ content }}
 
-</ul>
-<div class="contact-boxes">
-  <p class="rss-subscribe">(there's an <a href="/feed.xml">RSS</a>)</p>
-</div>
+  </ul>
+  <div class="contact-boxes">
+    <p class="rss-subscribe">(there's an <a href="/feed.xml">RSS</a>)</p>
+  </div>
 </article>
