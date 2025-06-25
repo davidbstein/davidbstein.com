@@ -24,7 +24,7 @@ md = MarkdownIt().use(attrs_plugin)
 ROOT = Path("src")
 LAYOUTS = ROOT / "_layouts"
 
-BUILD_TARGET = Path("content")
+BUILD_TARGET = Path("docs")
 SASS_DIR = ROOT / '_sass'
 
 
