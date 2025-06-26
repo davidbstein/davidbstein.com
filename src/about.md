@@ -52,13 +52,17 @@ I also worked on design priciples for space-based synthetic aperature radar at t
 from 2009-2011 i did research in distributed robotics at <a href="http://groups.csail.mit.edu/drl/wiki/index.php?title=Main_Page" title="" target="_blank">MIT CSAIL</a>, where I designed and built heterogeneous robot swarms to prove feasibility of automated distributed construction of large structures. In 2020, I returned briefly to write my Master's thesis, demonstrating a novel approach to homomorphically encrypted biometric recognition.
 -->
 
+<!-- 
+<p style="text-align: center;font-size: 1.5em;margin: 2em;font-family: sans-serif;">
+  <a href="/publications">publications</a> ⎸
+  <a href="https://law.vanderbilt.edu/bio/?pid=david-stein">academic bio</a>
+</p>
+-->
+
 <div class="wide-img">
   <img src="/assets/images/2025-visual-resume.svg" alt="visual resume" class="visual-resume">
 </div>
 
-<p style="text-align: center;">
-  <a href=/publications>Publications</a>
-</p>
 
 <div>
   <div class="contact-boxes">
@@ -73,7 +77,7 @@ from 2009-2011 i did research in distributed robotics at <a href="http://groups.
       </a>
     </div>
     <div class="contact">
-      <a href="/about/github.html">
+      <a href="/github.html">
         <img src="/static/img/contact/github.png">
       </a>
     </div>

@@ -32,7 +32,7 @@ _Annual Meeting of the Association of Computational Linguistics, Vol. 63, no. 90
 [
 **Hot Apps: Recalibrating IP to Address Online Software**
 <br/>
-<span style="font-variant: small-caps;"> 2024 Wis. L. J. 1013 </span>
+<span style="font-variant: small-caps;"> 2024 Wis. L.J. 1013 </span>
 ](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4546335)
 
 [
@@ -94,37 +94,52 @@ _American Institute of Aeronautics and Astronautics SPACE Forum_ (2009)
 ## Patents
 [
 **Methods, Systems, And Media For Secure Authentication Of Users Based On A Biometric Identifier
-And Knowledge-Based Secondary Information**, David Stein, Ryan Vilim, John Wittrock, 
+And Knowledge-Based Secondary Information**
+<br/>
+David Stein, Ryan Vilim, John Wittrock
+<br/>
 U.S. Patent 11,711,215 (issued July 25, 2023)
 ](https://patentcenter.uspto.gov/applications/16513295)
 
 
 [
-**Secure methods, systems, and media for generating and authenticating user credentials**, John Wittrock, David Stein
+**Secure methods, systems, and media for generating and authenticating user credentials**
+<br/>
+John Wittrock, David Stein
+<br/>
 U.S. Patent 11,652,819 (issued May 16, 2023)
 ](https://patentcenter.uspto.gov/applications/16513295)
 
 [
-**Methods, systems, and media for recovering identity information in verifiable claims-based systems**, David Stein, John Wittrock
+**Methods, systems, and media for recovering identity information in verifiable claims-based systems**
+<br/>
+David Stein, John Wittrock
+<br/>
 U.S. Patent 11,108,760 (issued Aug. 31, 2021)
 ](https://patentcenter.uspto.gov/applications/17460860)
 
 [
-**Identity systems, methods, and media for auditing and notifying users concerning verifiable claims**, David Stein, John Wittrock
+**Identity systems, methods, and media for auditing and notifying users concerning verifiable claims**
+<br/>
+David Stein, John Wittrock
+<br/>
 U.S. Patent 11,115,207 (issued Sept. 21, 2021)
 ](https://patentcenter.uspto.gov/applications/16704544)
 
 [
-**Authorization review system**, David Stein
+**Authorization review system**
+<br/>
 U.S. Patent 9,497,253 (issued Nov.  15, 2016)
 ](https://patentcenter.uspto.gov/applications/14249117)
 
 [
-**Presenting data in response to an incomplete query**, David Stein
+**Presenting data in response to an incomplete query**
+<br/>
 U.S. Patent 9,235,636 (issued Jan.  12, 2016)
 ](https://patentcenter.uspto.gov/applications/13722480)
 
 [
-**Unified interface for querying data in legacy databases and current databases**, David Stein
+**Unified interface for querying data in legacy databases and current databases**
+<br/>
 U.S. Patent App.  13,737,322 (published July 10, 2014)
 ](https://patentcenter.uspto.gov/applications/13722480)
