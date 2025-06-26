@@ -128,7 +128,7 @@ def render_html(metadata, content):
     }
   )
   if 'layout' in layout_metadata:
-    return render_html(layout_metadata, rendered_content)
+    return render_html({**metadata, **layout_metadata}, rendered_content)
   else:
     return rendered_content
 
