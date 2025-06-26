@@ -26,6 +26,7 @@ LAYOUTS = ROOT / "_layouts"
 
 BUILD_TARGET = Path("content")
 SASS_DIR = ROOT / '_sass'
+os.makedirs(BUILD_TARGET, exist_ok=True)
 
 import shutil
 shutil.rmtree(BUILD_TARGET)
