@@ -14,7 +14,7 @@ permalink: /publications/
     text-decoration: underline;
     text-decoration-color: #0003;
   }
-  main .wrapper a strong:hover {
+  main .wrapper a:hover strong {
     text-decoration-color: #000;
   }
 </style>
