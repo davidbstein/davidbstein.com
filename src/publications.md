@@ -5,7 +5,12 @@ permalink: /publications/
 ---
 
 <style>  a {
-    color: inherit;
+    color: black;
+    text-decoration: none;
+  }
+  a b {
+    color: black;
+    text-decoration: inherit;
   }
 </style>
 
