@@ -21,7 +21,10 @@ main {
   }
 
   a {
-    text-decoration: none;
+    color: #009;
+    text-decoration: underline;
+    text-decoration-color: #0092; 
+    transition: all 0.15s ease-in-out;
     &:hover {
       text-decoration: underline;
     }
