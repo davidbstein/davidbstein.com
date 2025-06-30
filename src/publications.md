@@ -7,10 +7,15 @@ permalink: /publications/
 <style>  main .wrapper a {
     color: black;
     text-decoration: none;
+    transition: all 0.2s ease-in-out;
   }
   main .wrapper a b, main .wrapper a strong {
     color: black;
-    text-decoration: inherit;
+    text-decoration: underline;
+    text-decoration-color: #0003;
+  }
+  main .wrapper a strong:hover {
+    text-decoration-color: #000;
   }
 </style>
 
