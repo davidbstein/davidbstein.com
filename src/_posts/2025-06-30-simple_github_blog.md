@@ -12,7 +12,7 @@ Github Pages' default rendering pipeline is a little fiddly. To preview your sit
 
 # The problem
 
-I felt like I'm always bug-fixing Ruby or Gems or Bundler or Jekyll for half an hour when I want to make a change my personal homepage or blog. And sometimes things changed in surprising ways. But switching to a new platform would require converting all my posts to use some other templating system. 
+I felt like I always spent half an hour bug-fixing Ruby or Gems or Bundler or Jekyll when I wanted to make a change my personal homepage or blog. Bad friction. But switching to a new platform would require converting all my posts to use some other templating system. 
 
 # My solution
 
