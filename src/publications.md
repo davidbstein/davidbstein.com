@@ -8,7 +8,7 @@ permalink: /publications/
     color: black;
     text-decoration: none;
   }
-  a b {
+  a b, a strong {
     color: black;
     text-decoration: inherit;
   }
