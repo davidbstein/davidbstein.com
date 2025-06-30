@@ -4,11 +4,11 @@ title: publications
 permalink: /publications/
 ---
 
-<style>  a {
+<style>  main .wrapper a {
     color: black;
     text-decoration: none;
   }
-  a b, a strong {
+  main .wrapper a b, main .wrapper a strong {
     color: black;
     text-decoration: inherit;
   }
