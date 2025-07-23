@@ -4,7 +4,7 @@ title: about
 permalink: /about/
 ---
 
-I’m an [assistant professor at Vanderbilt Law School](https://law.vanderbilt.edu/bio/?pid=david-stein){target="_blank"}, where I study the relationship between legal institutions and technical infrastructre. I used to be a software engineer.
+I’m an [assistant professor at Vanderbilt Law School](https://law.vanderbilt.edu/bio/?pid=david-stein){target="_blank"}, where I study the relationship between legal institutions and technical infrastructure. I used to be a software engineer.
 
 I worked in tech for about a decade. Among other roles: I was a tech lead at [Sidewalk Labs](https://www.sidewalklabs.com){target="_blank"}, where I worked on data security, privacy, and “smart” street grids; director of product engineering at [Braze](https://www.braze.com/product/){target="_blank"}; and an early member of the engineering team at [Dropbox](https://dropbox.com){target="_blank"}, where I focused mostly on making large-scale data analytics accessible to non-engineers, including setting up the teams and infrastructure for managing security incident response, prototyping, internal tools, and sales and support automation.
 
